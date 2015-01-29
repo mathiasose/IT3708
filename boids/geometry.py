@@ -1,5 +1,6 @@
 from math import cos, sin
 
+
 def rotate_point(point, r, around):
     translated = point[0] - around[0], point[1] - around[1]
     rotated = (translated[0] * cos(r) - translated[1] * sin(r), translated[0] * sin(r) + translated[1] * cos(r))

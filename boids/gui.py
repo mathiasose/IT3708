@@ -4,23 +4,20 @@ import sys
 import pygame
 from time import sleep
 
+from config import *
 from geometry import rotate_polygon
 
-
-WINDOW_DIMENSIONS = (1800, 1000)
-BACKGROUND = (255, 255, 255)
-FOREGROUND = (0, 0, 0)
 
 random_color = lambda: (randint(0, 255), randint(0, 255), randint(0, 255))
 
 
 class PointyShape(object):
-    def __init__(self, x, y, scale=1.0, rotation=0.0, color=FOREGROUND):
+    def __init__(self, x, y, radius=BOID_RADIUS, rotation=0.0, color=FOREGROUND):
         self.x = x
         self.y = y
-        self.scale = scale
         self.rotation = rotation
         self.color = color
+        self.radius = radius
 
     @property
     def center(self):
@@ -33,33 +30,67 @@ class PointyShape(object):
 
     @property
     def shape(self):
-        """
-        creates vertices for a diamond-ish shape with
-        """
-        offset = self.scale * 5
-        aligner = (3.0 / 4.0) * pi
         return rotate_polygon(
             polygon=[
                 (
-                    self.x - offset,
-                    self.y - offset
+                    self.x - self.radius,
+                    self.y - self.radius
                 ),
                 (
                     self.x,
-                    self.y + offset
+                    self.y + self.radius
                 ),
                 (
-                    self.x + offset,
-                    self.y + offset
+                    self.x + self.radius,
+                    self.y + self.radius
                 ),
                 (
-                    self.x + offset,
+                    self.x + self.radius,
                     self.y
                 )
             ],
-            r=self.rotation + aligner,
+            r=self.rotation + (3.0 / 4.0) * pi,
             around=self.center
         )
+
+
+def keydown_handler(world, event):
+    if event.key == pygame.K_q:
+        world.separation_weight += ADJUST_WEIGHT
+    elif event.key == pygame.K_a:
+        world.separation_weight -= ADJUST_WEIGHT
+    elif event.key == pygame.K_w:
+        world.alignment_weight += ADJUST_WEIGHT
+    elif event.key == pygame.K_s:
+        world.alignment_weight -= ADJUST_WEIGHT
+    elif event.key == pygame.K_e:
+        world.cohesion_weight += ADJUST_WEIGHT
+    elif event.key == pygame.K_d:
+        world.cohesion_weight -= ADJUST_WEIGHT
+    elif event.key == pygame.K_t:
+        world.tick += ADJUST_TICK
+    elif event.key == pygame.K_g:
+        world.tick -= ADJUST_TICK
+        if world.tick < 0:
+            world.tick = 0
+    elif event.key == pygame.K_SPACE:
+        world.paused = not world.paused
+    elif event.key == pygame.K_1:
+        world.change_scenario(1)
+    elif event.key == pygame.K_2:
+        world.change_scenario(2)
+    elif event.key == pygame.K_3:
+        world.change_scenario(3)
+    elif event.key == pygame.K_4:
+        world.change_scenario(4)
+    elif event.key == pygame.K_5:
+        world.change_scenario(5)
+    elif event.key == pygame.K_6:
+        world.change_scenario(6)
+    else:
+        return
+
+    print "sep: {}\tali: {}\tcoh: {}".format(world.separation_weight, world.alignment_weight, world.cohesion_weight)
 
 
 def boids_pygame(world):
@@ -68,7 +99,9 @@ def boids_pygame(world):
     window = pygame.display.set_mode(WINDOW_DIMENSIONS)
 
     while True:
-        world.update()
+        if not world.paused:
+            world.calculate_moves()
+            world.do_moves()
 
         window.fill(BACKGROUND)
 
@@ -81,7 +114,9 @@ def boids_pygame(world):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit(0)
-            else:
-                print event
+            elif event.type == pygame.KEYDOWN:
+                keydown_handler(world, event)
+                # else:
+                # print event
 
-        sleep(0.05)
+        sleep(world.tick)
