@@ -87,6 +87,10 @@ def keydown_handler(world, event):
         world.change_scenario(5)
     elif event.key == pygame.K_6:
         world.change_scenario(6)
+    elif event.key == pygame.K_PLUS:
+        world.add_boids(1)
+    elif event.key == pygame.K_RETURN:
+        world.clear_obstacles()
     else:
         return
 
@@ -105,6 +109,9 @@ def boids_pygame(world):
 
         window.fill(BACKGROUND)
 
+        for obstacle in world.obstacles:
+            pygame.draw.circle(window, FOREGROUND, obstacle.position, obstacle.r)
+
         for boid in world.boids:
             shape = PointyShape(boid.x, boid.y, rotation=boid.heading, color=boid.color)
             pygame.draw.polygon(window, shape.color, shape.shape)
@@ -116,6 +123,9 @@ def boids_pygame(world):
                 sys.exit(0)
             elif event.type == pygame.KEYDOWN:
                 keydown_handler(world, event)
+            elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                x, y = event.pos
+                world.add_obstacle(x, y)
                 # else:
                 # print event
 

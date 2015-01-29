@@ -1,11 +1,9 @@
-from math import sqrt, atan2
+from math import atan2
 from random import randint, uniform
 
 from config import *
+from geometry import euclidean_distance, normalize_vector
 from gui import random_color
-
-
-euclidean_distance = lambda a, b: sqrt((a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2)
 
 
 class Boid(object):
@@ -33,8 +31,7 @@ class Boid(object):
 
     @property
     def normalized_velocity(self):
-        l = self.velocity_magnitude
-        return float(self.vx) / l, float(self.vy) / l
+        return normalize_vector(self.vx, self.vy)
 
     @property
     def heading(self):
@@ -51,8 +48,8 @@ class Boid(object):
 
         return min(ax, bx, key=abs), min(ay, by, key=abs)
 
-    def relative_distance(self, boid):
-        return euclidean_distance((0, 0), self.relative_coordinates(boid.x, boid.y))
+    def shortest_distance(self, x, y):
+        return euclidean_distance((0, 0), self.relative_coordinates(x, y))
 
     @property
     def neighbours(self):
@@ -64,7 +61,7 @@ class Boid(object):
             if boid.position == self.position:
                 continue
 
-            distance = self.relative_distance(boid)
+            distance = self.shortest_distance(boid.x, boid.y) - 2 * BOID_RADIUS
 
             if distance <= self.world.neighbourhood_radius:
                 r.append((boid, distance))
@@ -75,12 +72,33 @@ class Boid(object):
         neighbours = self.neighbours
         neighbour_count = len(neighbours)
 
+        forces = {
+            'separation': (0, 0),
+            'alignment': (0, 0),
+            'cohesion': (0, 0),
+            'avoidance': (0, 0)
+        }
+
+        avoidance_x, avoidance_y = 0.0, 0.0
+        for obstacle in self.world.obstacles:
+            distance = self.shortest_distance(obstacle.x, obstacle.y)
+            if distance < (NEIGHBOURHOOD_RADIUS + OBSTACLE_RADIUS + BOID_RADIUS):
+                normalized_vx, normalized_vy = self.normalized_velocity
+
+                future_x = distance * normalized_vx + self.x
+                future_y = distance * normalized_vy + self.y
+
+                d = euclidean_distance((future_x, future_y), obstacle.position)
+
+                if d < (obstacle.r + BOID_RADIUS):
+                    factor = 1 - d / obstacle.r
+                    avoidance_x += factor * -normalized_vy
+                    avoidance_y += factor * normalized_vx
+
+        forces['avoidance'] = normalize_vector(avoidance_x, avoidance_y)
+
         if neighbour_count == 0:
-            return {
-                'separation': (0, 0),
-                'alignment': (0, 0),
-                'cohesion': (0, 0)
-            }
+            return forces
 
         sum_x, sum_y = 0.0, 0.0
         sum_vx, sum_vy = 0.0, 0.0
@@ -99,28 +117,31 @@ class Boid(object):
         avg_vx = sum_vx / neighbour_count
         avg_vy = sum_vy / neighbour_count
 
-        return {
-            'separation': (sum_vx - self.vx, sum_vy - self.vy),
-            'alignment': (avg_vx - self.vx, avg_vy - self.vy),
-            'cohesion': (avg_x - self.vx, avg_y - self.vy)
-        }
+        forces['separation'] = normalize_vector(sum_vx - self.vx, sum_vy - self.vy)
+        forces['alignment'] = normalize_vector(avg_vx - self.vx, avg_vy - self.vy)
+        forces['cohesion'] = normalize_vector(avg_x - self.vx, avg_y - self.vy)
+
+        return forces
 
     def change_velocity(self):
         forces = self.calculate_forces()
         separation_x, separation_y = forces['separation']
         alignment_x, alignment_y = forces['alignment']
         cohesion_x, cohesion_y = forces['cohesion']
+        avoidance_x, avoidance_y = forces['avoidance']
 
         self.vx += sum((
             self.world.separation_weight * separation_x,
             self.world.alignment_weight * alignment_x,
-            self.world.cohesion_weight * cohesion_x
+            self.world.cohesion_weight * cohesion_x,
+            self.world.avoidance_weight * avoidance_x
         ))
 
         self.vy += sum((
             self.world.separation_weight * separation_y,
             self.world.alignment_weight * alignment_y,
-            self.world.cohesion_weight * cohesion_y
+            self.world.cohesion_weight * cohesion_y,
+            self.world.avoidance_weight * avoidance_y
         ))
 
         if self.velocity_magnitude > BOID_MAX_SPEED:
@@ -140,17 +161,31 @@ class Boid(object):
         self.y = self.next_y
 
 
+class Obstacle(object):
+    def __init__(self, x, y, r):
+        self.x = x
+        self.y = y
+        self.r = r
+
+    @property
+    def position(self):
+        return self.x, self.y
+
+
 class BoidWorld(object):
     def __init__(self, dimensions, neighbourhood_radius):
         self.scenario = 1
         self.separation_weight = SCENARIOS[self.scenario][0]
         self.alignment_weight = SCENARIOS[self.scenario][1]
         self.cohesion_weight = SCENARIOS[self.scenario][2]
+        self.avoidance_weight = OBSTACLE_AVOIDANCE_WEIGHT
 
         self.dimensions = dimensions
 
         self.boids = []
         self.neighbourhood_radius = neighbourhood_radius
+
+        self.obstacles = []
 
         self.tick = TICK
         self.paused = True
@@ -192,6 +227,9 @@ class BoidWorld(object):
 
         return self.boids
 
+    def add_obstacle(self, x, y, r=OBSTACLE_RADIUS):
+        self.obstacles.append(Obstacle(x, y, r))
+
     def calculate_moves(self):
         for boid in self.boids:
             boid.change_velocity()
@@ -200,3 +238,6 @@ class BoidWorld(object):
     def do_moves(self):
         for boid in self.boids:
             boid.do_move()
+
+    def clear_obstacles(self):
+        self.obstacles = []
