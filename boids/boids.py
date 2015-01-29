@@ -33,7 +33,8 @@ class Boid(object):
 
     @property
     def normalized_velocity(self):
-        return float(self.vx) / self.velocity_magnitude, float(self.vy) / self.velocity_magnitude
+        l = self.velocity_magnitude
+        return float(self.vx) / l, float(self.vy) / l
 
     @property
     def heading(self):
@@ -54,87 +55,61 @@ class Boid(object):
         return euclidean_distance((0, 0), self.relative_coordinates(boid.x, boid.y))
 
     @property
-    def neighbourhood(self):
-        return [
-            boid for boid in self.world.boids if
-            self.relative_distance(boid) <= self.world.neighbourhood_radius
-        ]
-
-    def calculate_separation_force(self, neighbourhood):
-        n_neighbours = len(neighbourhood) - 1
-        if n_neighbours == 0:
-            return 0, 0
-
-        sum_vx = 0.0
-        sum_vy = 0.0
-
-        for b in neighbourhood:
-            if self.position == (b.x, b.y):
+    def neighbours(self):
+        """
+        excludes self
+        """
+        r = []
+        for boid in self.world.boids:
+            if boid.position == self.position:
                 continue
 
-            factor = 1 - self.relative_distance(b) / float(NEIGHBOURHOOD_RADIUS)
-            sum_vx += factor * b.vx
-            sum_vy += factor * b.vy
+            distance = self.relative_distance(boid)
 
-        dx = sum_vx - self.vx
-        dy = sum_vy - self.vy
+            if distance <= self.world.neighbourhood_radius:
+                r.append((boid, distance))
 
-        return dx, dy
+        return r
 
-    def calculate_alignment_force(self, neighbourhood):
-        n_neighbours = len(neighbourhood) - 1
-        if n_neighbours == 0:
-            return 0, 0
+    def calculate_forces(self):
+        neighbours = self.neighbours
+        neighbour_count = len(neighbours)
 
-        sum_vx = 0.0
-        sum_vy = 0.0
+        if neighbour_count == 0:
+            return {
+                'separation': (0, 0),
+                'alignment': (0, 0),
+                'cohesion': (0, 0)
+            }
 
-        for b in neighbourhood:
-            if self.position == (b.x, b.y):
-                continue
+        sum_x, sum_y = 0.0, 0.0
+        sum_vx, sum_vy = 0.0, 0.0
 
-            factor = 1 - self.relative_distance(b) / float(NEIGHBOURHOOD_RADIUS)
+        for boid, distance in neighbours:
+            factor = 1 - distance / float(NEIGHBOURHOOD_RADIUS)
 
-            sum_vx += factor * b.vx
-            sum_vy += factor * b.vy
+            sum_x += factor * boid.x
+            sum_y += factor * boid.y
+            sum_vx += factor * boid.vx
+            sum_vy += factor * boid.vy
 
-        avg_x = sum_vx / n_neighbours
-        avg_y = sum_vy / n_neighbours
+        avg_x = sum_x / neighbour_count
+        avg_y = sum_y / neighbour_count
 
-        dx = avg_x - self.vx
-        dy = avg_y - self.vy
+        avg_vx = sum_vx / neighbour_count
+        avg_vy = sum_vy / neighbour_count
 
-        return dx, dy
-
-    def calculate_cohesion_force(self, neighbourhood):
-        n_neighbours = len(neighbourhood) - 1
-        if n_neighbours == 0:
-            return 0, 0
-
-        sum_x = 0.0
-        sum_y = 0.0
-        for b in neighbourhood:
-            if self.position == (b.x, b.y):
-                continue
-
-            factor = 1 - self.relative_distance(b) / float(NEIGHBOURHOOD_RADIUS)
-
-            sum_x += factor * b.x
-            sum_y += factor * b.y
-
-        avg_x = sum_x / n_neighbours
-        avg_y = sum_y / n_neighbours
-
-        dx = avg_x - self.vx
-        dy = avg_y - self.vy
-
-        return dx, dy
+        return {
+            'separation': (sum_vx - self.vx, sum_vy - self.vy),
+            'alignment': (avg_vx - self.vx, avg_vy - self.vy),
+            'cohesion': (avg_x - self.vx, avg_y - self.vy)
+        }
 
     def change_velocity(self):
-        neighbourhood = self.neighbourhood
-        separation_x, separation_y = self.calculate_separation_force(neighbourhood)
-        alignment_x, alignment_y = self.calculate_alignment_force(neighbourhood)
-        cohesion_x, cohesion_y = self.calculate_cohesion_force(neighbourhood)
+        forces = self.calculate_forces()
+        separation_x, separation_y = forces['separation']
+        alignment_x, alignment_y = forces['alignment']
+        cohesion_x, cohesion_y = forces['cohesion']
 
         self.vx += sum((
             self.world.separation_weight * separation_x,
