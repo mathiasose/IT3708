@@ -5,10 +5,12 @@ import pygame
 from time import sleep
 
 from config import *
-from geometry import rotate_polygon
+from geometry import rotate_polygon, heading
 
 
 random_color = lambda: (randint(0, 255), randint(0, 255), randint(0, 255))
+
+colors = {}
 
 
 class PointyShape(object):
@@ -102,6 +104,9 @@ def boids_pygame(world):
 
     window = pygame.display.set_mode(WINDOW_DIMENSIONS)
 
+    for boid in world.boids:
+        colors[boid] = random_color()
+
     while True:
         if not world.paused:
             world.calculate_moves()
@@ -113,7 +118,7 @@ def boids_pygame(world):
             pygame.draw.circle(window, FOREGROUND, obstacle.position, obstacle.r)
 
         for boid in world.boids:
-            shape = PointyShape(boid.x, boid.y, rotation=boid.heading, color=boid.color)
+            shape = PointyShape(boid.x, boid.y, rotation=heading(boid.vx, boid.vy), color=colors[boid])
             pygame.draw.polygon(window, shape.color, shape.shape)
 
         pygame.display.flip()

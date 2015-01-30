@@ -1,9 +1,7 @@
-from math import atan2
 from random import randint, uniform
 
 from config import *
 from geometry import euclidean_distance, normalize_vector
-from gui import random_color
 
 
 class Boid(object):
@@ -13,7 +11,6 @@ class Boid(object):
         self.vx = vx
         self.vy = vy
         self.world = world
-        self.color = random_color()
         self.next_x = x
         self.next_y = y
 
@@ -33,18 +30,9 @@ class Boid(object):
     def normalized_velocity(self):
         return normalize_vector(self.vx, self.vy)
 
-    @property
-    def heading(self):
-        return atan2(self.vy, self.vx)
-
-    def relative_coordinates(self, x2, y2):
-        x1 = self.x
-        y1 = self.y
-        w = self.world.width
-        h = self.world.height
-
-        ax, ay = x2 - x1, y2 - y1
-        bx, by = w - abs(ax), h - abs(ay)
+    def relative_coordinates(self, other_x, other_y):
+        ax, ay = other_x - self.x, other_y - self.y
+        bx, by = self.world.width - abs(ax), self.world.height - abs(ay)
 
         return min(ax, bx, key=abs), min(ay, by, key=abs)
 
@@ -68,6 +56,11 @@ class Boid(object):
 
         return r
 
+    def course_adjusting_force(self, target_vx, target_vy):
+        dx = target_vx - self.vx
+        dy = target_vy - self.vy
+        return dx, dy
+
     def calculate_forces(self):
         neighbours = self.neighbours
         neighbour_count = len(neighbours)
@@ -82,7 +75,7 @@ class Boid(object):
         avoidance_x, avoidance_y = 0.0, 0.0
         for obstacle in self.world.obstacles:
             distance = self.shortest_distance(obstacle.x, obstacle.y)
-            if distance < (NEIGHBOURHOOD_RADIUS + OBSTACLE_RADIUS + BOID_RADIUS):
+            if distance < (BOID_RADIUS + NEIGHBOURHOOD_RADIUS + OBSTACLE_RADIUS):
                 normalized_vx, normalized_vy = self.normalized_velocity
 
                 future_x = distance * normalized_vx + self.x
@@ -105,26 +98,29 @@ class Boid(object):
 
         for boid, distance in neighbours:
             factor = 1 - distance / float(NEIGHBOURHOOD_RADIUS)
+            nvx, nvy = normalize_vector(boid.vx, boid.vy)
+            sum_vx += factor * nvx
+            sum_vy += factor * nvy
 
-            sum_x += factor * boid.x
-            sum_y += factor * boid.y
-            sum_vx += factor * boid.vx
-            sum_vy += factor * boid.vy
+            sum_x += boid.x
+            sum_y += boid.y
 
-        avg_x = sum_x / neighbour_count
-        avg_y = sum_y / neighbour_count
+        # forces['separation'] = normalize_vector(sum_vx, sum_vy)
 
         avg_vx = sum_vx / neighbour_count
         avg_vy = sum_vy / neighbour_count
+        # forces['alignment'] = normalize_vector(avg_vx, avg_vy)
 
-        forces['separation'] = normalize_vector(sum_vx - self.vx, sum_vy - self.vy)
-        forces['alignment'] = normalize_vector(avg_vx - self.vx, avg_vy - self.vy)
-        forces['cohesion'] = normalize_vector(avg_x - self.vx, avg_y - self.vy)
+        avg_x = sum_x / neighbour_count
+        avg_y = sum_y / neighbour_count
+        forces['cohesion'] = normalize_vector(*self.relative_coordinates(avg_x, avg_y))
 
         return forces
 
     def change_velocity(self):
         forces = self.calculate_forces()
+        # print forces
+
         separation_x, separation_y = forces['separation']
         alignment_x, alignment_y = forces['alignment']
         cohesion_x, cohesion_y = forces['cohesion']

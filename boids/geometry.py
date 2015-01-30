@@ -1,4 +1,4 @@
-from math import cos, sin, sqrt
+from math import cos, sin, sqrt, atan2
 
 
 euclidean_distance = lambda a, b: sqrt((a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2)
@@ -24,3 +24,7 @@ def normalize_vector(x, y):
         return 0.0, 0.0
 
     return float(x) / l, float(y) / l
+
+
+def heading(x, y):
+    return atan2(y, x)
