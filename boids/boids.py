@@ -96,6 +96,8 @@ class Boid(object):
         sum_x, sum_y = 0.0, 0.0
         sum_vx, sum_vy = 0.0, 0.0
 
+        sep_x, sep_y = 0.0, 0.0
+
         for boid, distance in neighbours:
             factor = 1 - distance / float(NEIGHBOURHOOD_RADIUS)
             nvx, nvy = normalize_vector(boid.vx, boid.vy)
@@ -105,11 +107,15 @@ class Boid(object):
             sum_x += boid.x
             sum_y += boid.y
 
-        # forces['separation'] = normalize_vector(sum_vx, sum_vy)
+            rel_x, rel_y = self.relative_coordinates(boid.x, boid.y)
+            sep_x -= factor * rel_x
+            sep_y -= factor * rel_y
+
+        forces['separation'] = normalize_vector(sep_x, sep_y)
 
         avg_vx = sum_vx / neighbour_count
         avg_vy = sum_vy / neighbour_count
-        # forces['alignment'] = normalize_vector(avg_vx, avg_vy)
+        forces['alignment'] = normalize_vector(avg_vx, avg_vy)
 
         avg_x = sum_x / neighbour_count
         avg_y = sum_y / neighbour_count
