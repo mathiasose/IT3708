@@ -1,3 +1,4 @@
+from __future__ import print_function, division, unicode_literals
 from math import cos, sin, sqrt, atan2
 
 
@@ -28,3 +29,13 @@ def normalize_vector(x, y):
 
 def heading(x, y):
     return atan2(y, x)
+
+
+def angle(p1, p2):
+    x1, y1 = p1
+    x2, y2 = p2
+    return atan2(y2, x2) - atan2(y1, x1)
+
+
+def point_within_circle(point, center, radius):
+    return euclidean_distance(point, center) <= radius

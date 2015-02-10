@@ -1,7 +1,8 @@
+from __future__ import print_function, division, unicode_literals
 from random import randint, uniform
 
 from config import *
-from geometry import euclidean_distance, normalize_vector
+from geometry import euclidean_distance, normalize_vector, angle
 
 
 class Boid(object):
@@ -13,6 +14,8 @@ class Boid(object):
         self.world = world
         self.next_x = x
         self.next_y = y
+
+        self.dead = False
 
     @property
     def position(self):
@@ -28,6 +31,9 @@ class Boid(object):
 
     @property
     def normalized_velocity(self):
+        """
+        aka a length 1 vector in the current movement direction
+        """
         return normalize_vector(self.vx, self.vy)
 
     def relative_coordinates(self, other_x, other_y):
@@ -46,6 +52,9 @@ class Boid(object):
         """
         r = []
         for boid in self.world.boids:
+            if boid.dead:
+                continue
+
             if boid.position == self.position:
                 continue
 
@@ -76,19 +85,37 @@ class Boid(object):
         for obstacle in self.world.obstacles:
             distance = self.shortest_distance(obstacle.x, obstacle.y)
             if distance < (BOID_RADIUS + NEIGHBOURHOOD_RADIUS + OBSTACLE_RADIUS):
+                if distance < (OBSTACLE_RADIUS):
+                    self.die()
+                    return forces
+
                 normalized_vx, normalized_vy = self.normalized_velocity
 
-                future_x = distance * normalized_vx + self.x
-                future_y = distance * normalized_vy + self.y
+                intersection = 0
+                for n in xrange(1, int(distance)):
+                    future_x = self.x + n * normalized_vx
+                    future_y = self.y + n * normalized_vy
 
-                d = euclidean_distance((future_x, future_y), obstacle.position)
+                    d = euclidean_distance((future_x, future_y), obstacle.position)
 
-                if d < (obstacle.r + BOID_RADIUS):
-                    factor = 1 - d / obstacle.r
+                    if d < (obstacle.r + BOID_RADIUS):
+                        intersection = n
+                        break
+
+                if intersection:
+                    factor = 1 - intersection / int(distance)
+                    future_x = self.x + distance * normalized_vx
+                    future_y = self.y + distance * normalized_vy
+                    v1 = self.relative_coordinates(*obstacle.position)
+                    v2 = self.relative_coordinates(future_x, future_y)
+                    a = angle(v1, v2)
+                    if a < 0:
+                        factor *= -1
+
                     avoidance_x += factor * -normalized_vy
                     avoidance_y += factor * normalized_vx
 
-        forces['avoidance'] = normalize_vector(avoidance_x, avoidance_y)
+        forces['avoidance'] = (avoidance_x, avoidance_y)
 
         if neighbour_count == 0:
             return forces
@@ -107,11 +134,11 @@ class Boid(object):
             sum_x += boid.x
             sum_y += boid.y
 
-            rel_x, rel_y = self.relative_coordinates(boid.x, boid.y)
+            rel_x, rel_y = normalize_vector(*self.relative_coordinates(boid.x, boid.y))
             sep_x -= factor * rel_x
             sep_y -= factor * rel_y
 
-        forces['separation'] = normalize_vector(sep_x, sep_y)
+        forces['separation'] = (sep_x, sep_y)
 
         avg_vx = sum_vx / neighbour_count
         avg_vy = sum_vy / neighbour_count
@@ -124,8 +151,11 @@ class Boid(object):
         return forces
 
     def change_velocity(self):
+        if self.dead:
+            return
+
         forces = self.calculate_forces()
-        # print forces
+        # print(forces)
 
         separation_x, separation_y = forces['separation']
         alignment_x, alignment_y = forces['alignment']
@@ -159,8 +189,17 @@ class Boid(object):
         self.next_y %= self.world.height
 
     def do_move(self):
+        if self.dead:
+            return
+
         self.x = self.next_x
         self.y = self.next_y
+
+    def die(self):
+        if not DEATH:
+            return
+
+        self.dead = True
 
 
 class Obstacle(object):

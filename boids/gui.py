@@ -1,3 +1,4 @@
+from __future__ import print_function, division, unicode_literals
 from math import pi
 from random import randint
 import sys
@@ -96,7 +97,7 @@ def keydown_handler(world, event):
     else:
         return
 
-    print "sep: {}\tali: {}\tcoh: {}".format(world.separation_weight, world.alignment_weight, world.cohesion_weight)
+    print("sep: {}\tali: {}\tcoh: {}".format(world.separation_weight, world.alignment_weight, world.cohesion_weight))
 
 
 def boids_pygame(world):
@@ -118,8 +119,14 @@ def boids_pygame(world):
             pygame.draw.circle(window, FOREGROUND, obstacle.position, obstacle.r)
 
         for boid in world.boids:
+            try:
+                colors[boid]
+            except KeyError:
+                colors[boid] = random_color()
+
             shape = PointyShape(boid.x, boid.y, rotation=heading(boid.vx, boid.vy), color=colors[boid])
             pygame.draw.polygon(window, shape.color, shape.shape)
+            # pygame.draw.circle(window, shape.color, boid.position, BOID_RADIUS)
 
         pygame.display.flip()
 
@@ -132,6 +139,6 @@ def boids_pygame(world):
                 x, y = event.pos
                 world.add_obstacle(x, y)
                 # else:
-                # print event
+                # print(event)
 
         sleep(world.tick)
