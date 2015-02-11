@@ -50,7 +50,7 @@ class Boid(object):
         """
         excludes self
         """
-        r = []
+        boids = []
         for boid in self.world.boids:
             if boid.dead:
                 continue
@@ -58,12 +58,28 @@ class Boid(object):
             if boid.position == self.position:
                 continue
 
-            distance = self.shortest_distance(boid.x, boid.y) - 2 * BOID_RADIUS
+            distance = self.shortest_distance(boid.x, boid.y)
 
             if distance <= self.world.neighbourhood_radius:
-                r.append((boid, distance))
+                boids.append((boid, distance))
 
-        return r
+        predators = []
+        for predator in self.world.predators:
+            if predator.dead:
+                continue
+
+            if predator.position == self.position:
+                continue
+
+            distance = self.shortest_distance(predator.x, predator.y)
+
+            if distance <= self.world.neighbourhood_radius:
+                predators.append((predator, distance))
+
+        return {
+            'boids': boids,
+            'predators': predators
+        }
 
     def course_adjusting_force(self, target_vx, target_vy):
         dx = target_vx - self.vx
@@ -72,20 +88,39 @@ class Boid(object):
 
     def calculate_forces(self):
         neighbours = self.neighbours
-        neighbour_count = len(neighbours)
+        neighbour_boids = neighbours['boids']
+        neighbour_predators = neighbours['predators']
+        neighbour_count = len(neighbour_boids)
 
         forces = {
             'separation': (0, 0),
             'alignment': (0, 0),
             'cohesion': (0, 0),
-            'avoidance': (0, 0)
+            'avoidance': (0, 0),
+            'flight': (0, 0)
         }
+
+        flight_x, flight_y = 0.0, 0.0
+        for predator, distance in neighbour_predators:
+            # distance = self.shortest_distance(predator.x, predator.y)
+            if distance < PREDATOR_RADIUS:
+                self.die()
+                return forces
+
+            factor = 1 - distance / float(NEIGHBOURHOOD_RADIUS)
+
+            rel_x, rel_y = self.relative_coordinates(predator.x, predator.y)
+
+            flight_x -= factor * rel_x
+            flight_y -= factor * rel_y
+
+        forces['flight'] = (flight_x, flight_y)
 
         avoidance_x, avoidance_y = 0.0, 0.0
         for obstacle in self.world.obstacles:
             distance = self.shortest_distance(obstacle.x, obstacle.y)
             if distance < (BOID_RADIUS + NEIGHBOURHOOD_RADIUS + OBSTACLE_RADIUS):
-                if distance < (OBSTACLE_RADIUS):
+                if distance < OBSTACLE_RADIUS:
                     self.die()
                     return forces
 
@@ -125,7 +160,7 @@ class Boid(object):
 
         sep_x, sep_y = 0.0, 0.0
 
-        for boid, distance in neighbours:
+        for boid, distance in neighbour_boids:
             factor = 1 - distance / float(NEIGHBOURHOOD_RADIUS)
             nvx, nvy = normalize_vector(boid.vx, boid.vy)
             sum_vx += factor * nvx
@@ -161,19 +196,22 @@ class Boid(object):
         alignment_x, alignment_y = forces['alignment']
         cohesion_x, cohesion_y = forces['cohesion']
         avoidance_x, avoidance_y = forces['avoidance']
+        flight_x, flight_y = forces['flight']
 
         self.vx += sum((
             self.world.separation_weight * separation_x,
             self.world.alignment_weight * alignment_x,
             self.world.cohesion_weight * cohesion_x,
-            self.world.avoidance_weight * avoidance_x
+            self.world.avoidance_weight * avoidance_x,
+            self.world.flight_weight * flight_x
         ))
 
         self.vy += sum((
             self.world.separation_weight * separation_y,
             self.world.alignment_weight * alignment_y,
             self.world.cohesion_weight * cohesion_y,
-            self.world.avoidance_weight * avoidance_y
+            self.world.avoidance_weight * avoidance_y,
+            self.world.flight_weight * flight_y
         ))
 
         if self.velocity_magnitude > BOID_MAX_SPEED:
@@ -213,6 +251,46 @@ class Obstacle(object):
         return self.x, self.y
 
 
+class Predator(Boid):
+    def calculate_forces(self):
+        preys = self.neighbours['boids']
+        prey_count = len(preys)
+
+        fx, fy = 0.0, 0.0
+        for boid, distance in preys:
+            factor = 1 - distance / float(NEIGHBOURHOOD_RADIUS)
+            rel_x, rel_y = normalize_vector(*self.relative_coordinates(boid.x, boid.y))
+
+            fx += factor * rel_x
+            fy += factor * rel_y
+
+        forces = {
+            'chase': (fx, fy)
+        }
+
+        return forces
+
+    def change_velocity(self):
+        if self.dead:
+            return
+
+        forces = self.calculate_forces()
+
+        chase_x, chase_y = forces['chase']
+
+        self.vx += sum((
+            self.world.chase_weight * chase_x,
+        ))
+        self.vy += sum((
+            self.world.chase_weight * chase_y,
+        ))
+
+        if self.velocity_magnitude > BOID_MAX_SPEED:
+            nx, ny = self.normalized_velocity
+            self.vx = BOID_MAX_SPEED * nx
+            self.vy = BOID_MAX_SPEED * ny
+
+
 class BoidWorld(object):
     def __init__(self, dimensions, neighbourhood_radius):
         self.scenario = 1
@@ -220,13 +298,16 @@ class BoidWorld(object):
         self.alignment_weight = SCENARIOS[self.scenario][1]
         self.cohesion_weight = SCENARIOS[self.scenario][2]
         self.avoidance_weight = OBSTACLE_AVOIDANCE_WEIGHT
+        self.chase_weight = CHASE_WEIGHT
+        self.flight_weight = FLIGHT_WEIGHT
 
         self.dimensions = dimensions
 
         self.boids = []
-        self.neighbourhood_radius = neighbourhood_radius
-
         self.obstacles = []
+        self.predators = []
+
+        self.neighbourhood_radius = neighbourhood_radius
 
         self.tick = TICK
         self.paused = True
@@ -236,6 +317,9 @@ class BoidWorld(object):
         self.separation_weight = SCENARIOS[self.scenario][0]
         self.alignment_weight = SCENARIOS[self.scenario][1]
         self.cohesion_weight = SCENARIOS[self.scenario][2]
+
+    def random_coordinates(self):
+        return randint(0, self.width), randint(0, self.height)
 
     @property
     def width(self):
@@ -255,8 +339,7 @@ class BoidWorld(object):
     def add_boids(self, n):
         remaining = n
         while remaining:
-            x = randint(0, self.width)
-            y = randint(0, self.height)
+            x, y = self.random_coordinates()
 
             if self.is_occupied(x, y):
                 continue
@@ -268,6 +351,19 @@ class BoidWorld(object):
 
         return self.boids
 
+    def add_predator(self):
+        while True:
+            x, y = self.random_coordinates()
+
+            if self.is_occupied(x, y):
+                continue
+
+            vx = uniform(-1, 1) * (BOID_MAX_SPEED / 2)
+            vy = uniform(-1, 1) * (BOID_MAX_SPEED / 2)
+            self.predators.append(Predator(x, y, vx, vy, world=self))
+
+            return self.predators
+
     def add_obstacle(self, x, y, r=OBSTACLE_RADIUS):
         self.obstacles.append(Obstacle(x, y, r))
 
@@ -276,9 +372,16 @@ class BoidWorld(object):
             boid.change_velocity()
             boid.calculate_move()
 
+        for predator in self.predators:
+            predator.change_velocity()
+            predator.calculate_move()
+
     def do_moves(self):
         for boid in self.boids:
             boid.do_move()
+
+        for predator in self.predators:
+            predator.do_move()
 
     def clear_obstacles(self):
         self.obstacles = []
