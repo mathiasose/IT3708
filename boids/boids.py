@@ -38,10 +38,15 @@ class Boid(object):
         return normalize_vector(self.vx, self.vy)
 
     def relative_coordinates(self, other_x, other_y):
-        ax, ay = other_x - self.x, other_y - self.y
-        bx, by = self.world.width - abs(ax), self.world.height - abs(ay)
+        x1 = other_x - self.x
+        x_sign = 0 if x1 == 0 else (x1 // abs(x1))
+        x2 = -x_sign * (self.world.width - abs(x1))
 
-        return min(ax, bx, key=abs), min(ay, by, key=abs)
+        y1 = other_y - self.y
+        y_sign = 0 if y1 == 0 else (y1 // abs(y1))
+        y2 = -y_sign * (self.world.height - abs(y1))
+
+        return min(x1, x2, key=abs), min(y1, y2, key=abs)
 
     def shortest_distance(self, x, y):
         return euclidean_distance((0, 0), self.relative_coordinates(x, y))
