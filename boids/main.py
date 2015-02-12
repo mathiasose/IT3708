@@ -9,6 +9,5 @@ if __name__ == "__main__":
     )
 
     world.add_boids(NUMBER_OF_BOIDS)
-    world.add_predator()
 
     boids_pygame(world)

@@ -96,6 +96,7 @@ def keydown_handler(world, event):
         world.add_predator()
     elif event.key == pygame.K_RETURN:
         world.clear_obstacles()
+        world.resurrect_boids()
     else:
         return
 
@@ -104,6 +105,7 @@ def keydown_handler(world, event):
 
 def boids_pygame(world):
     pygame.init()
+    font = pygame.font.SysFont("monospace", 15)
 
     window = pygame.display.set_mode(WINDOW_DIMENSIONS)
 
@@ -112,6 +114,7 @@ def boids_pygame(world):
 
     while True:
         if not world.paused:
+            world.find_neighbours()
             world.calculate_moves()
             world.do_moves()
 
@@ -130,7 +133,7 @@ def boids_pygame(world):
                 x=boid.x,
                 y=boid.y,
                 rotation=heading(boid.vx, boid.vy),
-                color=(255, 0, 0) if boid.dead else (0, 0, 0)
+                color=(255, 0, 0) if boid.dead else FOREGROUND
             )
             pygame.draw.polygon(window, shape.color, shape.shape)
 
@@ -156,5 +159,8 @@ def boids_pygame(world):
                 world.add_obstacle(x, y)
                 # else:
                 # print(event)
+
+        label = font.render("Some text!", 1, (255, 255, 0))
+        window.blit(label, (100, 100))
 
         sleep(world.tick)

@@ -1,4 +1,5 @@
 from __future__ import print_function, division, unicode_literals
+from collections import defaultdict
 from random import randint, uniform
 
 from config import *
@@ -45,51 +46,14 @@ class Boid(object):
     def shortest_distance(self, x, y):
         return euclidean_distance((0, 0), self.relative_coordinates(x, y))
 
-    @property
-    def neighbours(self):
-        """
-        excludes self
-        """
-        boids = []
-        for boid in self.world.boids:
-            if boid.dead:
-                continue
-
-            if boid.position == self.position:
-                continue
-
-            distance = self.shortest_distance(boid.x, boid.y)
-
-            if distance <= self.world.neighbourhood_radius:
-                boids.append((boid, distance))
-
-        predators = []
-        for predator in self.world.predators:
-            if predator.dead:
-                continue
-
-            if predator.position == self.position:
-                continue
-
-            distance = self.shortest_distance(predator.x, predator.y)
-
-            if distance <= self.world.neighbourhood_radius:
-                predators.append((predator, distance))
-
-        return {
-            'boids': boids,
-            'predators': predators
-        }
-
     def course_adjusting_force(self, target_vx, target_vy):
         dx = target_vx - self.vx
         dy = target_vy - self.vy
         return dx, dy
 
     def calculate_forces(self):
-        neighbours = self.neighbours
-        neighbour_boids = neighbours['boids']
-        neighbour_predators = neighbours['predators']
+        neighbour_boids = self.world.neighbour_sets[self]
+        neighbour_predators = self.world.predator_sets[self]
         neighbour_count = len(neighbour_boids)
 
         forces = {
@@ -101,8 +65,8 @@ class Boid(object):
         }
 
         flight_x, flight_y = 0.0, 0.0
-        for predator, distance in neighbour_predators:
-            # distance = self.shortest_distance(predator.x, predator.y)
+        for predator in neighbour_predators:
+            distance = self.world.distances[self, predator]
             if distance < PREDATOR_RADIUS:
                 self.die()
                 return forces
@@ -138,9 +102,10 @@ class Boid(object):
                         break
 
                 if intersection:
-                    factor = 1 - intersection / int(distance)
+                    factor = 1 - float(intersection) / int(distance)
                     future_x = self.x + distance * normalized_vx
                     future_y = self.y + distance * normalized_vy
+
                     v1 = self.relative_coordinates(*obstacle.position)
                     v2 = self.relative_coordinates(future_x, future_y)
                     a = angle(v1, v2)
@@ -160,7 +125,8 @@ class Boid(object):
 
         sep_x, sep_y = 0.0, 0.0
 
-        for boid, distance in neighbour_boids:
+        for boid in neighbour_boids:
+            distance = self.world.distances[self, boid]
             factor = 1 - distance / float(NEIGHBOURHOOD_RADIUS)
             nvx, nvy = normalize_vector(boid.vx, boid.vy)
             sum_vx += factor * nvx
@@ -214,6 +180,7 @@ class Boid(object):
             self.world.flight_weight * flight_y
         ))
 
+    def limit_velocity(self):
         if self.velocity_magnitude > BOID_MAX_SPEED:
             nx, ny = self.normalized_velocity
             self.vx = BOID_MAX_SPEED * nx
@@ -253,19 +220,20 @@ class Obstacle(object):
 
 class Predator(Boid):
     def calculate_forces(self):
-        preys = self.neighbours['boids']
+        preys = self.world.prey_sets[self]
         prey_count = len(preys)
 
-        fx, fy = 0.0, 0.0
-        for boid, distance in preys:
+        chase_x, chase_y = 0.0, 0.0
+        for boid in preys:
+            distance = self.world.distances[self, boid]
             factor = 1 - distance / float(NEIGHBOURHOOD_RADIUS)
-            rel_x, rel_y = normalize_vector(*self.relative_coordinates(boid.x, boid.y))
+            dir_x, dir_y = normalize_vector(*self.relative_coordinates(boid.x, boid.y))
 
-            fx += factor * rel_x
-            fy += factor * rel_y
+            chase_x += factor * dir_x
+            chase_y += factor * dir_y
 
         forces = {
-            'chase': (fx, fy)
+            'chase': (chase_x, chase_y)
         }
 
         return forces
@@ -281,14 +249,10 @@ class Predator(Boid):
         self.vx += sum((
             self.world.chase_weight * chase_x,
         ))
+
         self.vy += sum((
             self.world.chase_weight * chase_y,
         ))
-
-        if self.velocity_magnitude > BOID_MAX_SPEED:
-            nx, ny = self.normalized_velocity
-            self.vx = BOID_MAX_SPEED * nx
-            self.vy = BOID_MAX_SPEED * ny
 
 
 class BoidWorld(object):
@@ -312,6 +276,11 @@ class BoidWorld(object):
         self.tick = TICK
         self.paused = True
 
+        self.neighbour_sets = defaultdict(set)
+        self.prey_sets = defaultdict(set)
+        self.predator_sets = defaultdict(set)
+        self.distances = defaultdict(int)
+
     def change_scenario(self, n):
         self.scenario = n
         self.separation_weight = SCENARIOS[self.scenario][0]
@@ -328,6 +297,10 @@ class BoidWorld(object):
     @property
     def height(self):
         return self.dimensions[1]
+
+    @property
+    def creatures(self):
+        return self.boids + self.predators
 
     def is_occupied(self, x, y):
         for boid in self.boids:
@@ -358,8 +331,8 @@ class BoidWorld(object):
             if self.is_occupied(x, y):
                 continue
 
-            vx = uniform(-1, 1) * (BOID_MAX_SPEED / 2)
-            vy = uniform(-1, 1) * (BOID_MAX_SPEED / 2)
+            vx = uniform(-1, 1) * BOID_MAX_SPEED
+            vy = uniform(-1, 1) * BOID_MAX_SPEED
             self.predators.append(Predator(x, y, vx, vy, world=self))
 
             return self.predators
@@ -368,20 +341,50 @@ class BoidWorld(object):
         self.obstacles.append(Obstacle(x, y, r))
 
     def calculate_moves(self):
-        for boid in self.boids:
-            boid.change_velocity()
-            boid.calculate_move()
-
-        for predator in self.predators:
-            predator.change_velocity()
-            predator.calculate_move()
+        for creature in self.creatures:
+            creature.change_velocity()
+            creature.limit_velocity()
+            creature.calculate_move()
 
     def do_moves(self):
-        for boid in self.boids:
-            boid.do_move()
-
-        for predator in self.predators:
-            predator.do_move()
+        for creature in self.creatures:
+            creature.do_move()
 
     def clear_obstacles(self):
         self.obstacles = []
+
+    def resurrect_boids(self):
+        for boid in self.boids:
+            boid.dead = False
+
+    def find_neighbours(self):
+        self.neighbour_sets.clear()
+        self.prey_sets.clear()
+        self.predator_sets.clear()
+
+        done = set()
+
+        for boid in self.boids:
+            done.add(boid)
+
+            if boid.dead:
+                continue
+
+            for other_boid in self.boids:
+                if other_boid in done:
+                    continue
+
+                distance = boid.shortest_distance(other_boid.x, other_boid.y)
+
+                if distance <= self.neighbourhood_radius:
+                    self.neighbour_sets[boid].add(other_boid)
+                    self.neighbour_sets[other_boid].add(boid)
+                    self.distances[boid, other_boid] = self.distances[other_boid, boid] = distance
+
+            for predator in self.predators:
+                distance = boid.shortest_distance(predator.x, predator.y)
+
+                if distance <= self.neighbourhood_radius:
+                    self.predator_sets[boid].add(predator)
+                    self.prey_sets[predator].add(boid)
+                    self.distances[boid, predator] = self.distances[predator, boid] = distance
