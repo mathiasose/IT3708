@@ -99,7 +99,7 @@ def keydown_handler(world, event):
     elif event.key == pygame.K_6:
         world.change_scenario(6)
     elif event.key == pygame.K_PLUS:
-        world.add_boids(1)
+        world.add_boids(10)
     elif event.key == pygame.K_BACKSLASH:
         world.add_predator()
     elif event.key == pygame.K_RETURN:
@@ -136,16 +136,18 @@ def run_boids_pygame(world):
             pygame.draw.circle(window, (255, 255, 255), obstacle.position, obstacle.r)
 
         for boid in world.boids:
-            try:
-                colors[boid]
-            except KeyError:
-                colors[boid] = random_color()
+            # try:
+            #     colors[boid]
+            # except KeyError:
+            #     colors[boid] = random_color()
 
+            color = (255, 0, 0) if boid.dead else (255, 255, 0) if boid.avoiding or boid.fleeing else FOREGROUND
+            # color = (255, 255, 0) if boid == world.boids[0] else (0, 255, 0) if boid in world.neighbour_sets[world.boids[0]] else FOREGROUND
             shape = PointyShape(
                 x=boid.x,
                 y=boid.y,
                 rotation=heading(boid.vx, boid.vy),
-                color=(255, 0, 0) if boid.dead else (255, 255, 0) if boid.avoiding or boid.fleeing else FOREGROUND
+                color=color
             )
             pygame.draw.polygon(window, shape.color, shape.shape)
 

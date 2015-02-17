@@ -6,25 +6,28 @@ from config import *
 from geometry import euclidean_distance, normalize_vector, angle, point_within_circle
 
 
-class Boid(object):
-    def __init__(self, x, y, vx, vy, world):
+class CartesianWorldObject(object):
+    def __init__(self, x, y):
         self.x = x
         self.y = y
+
+    @property
+    def position(self):
+        return self.x, self.y
+
+
+class Boid(CartesianWorldObject):
+    def __init__(self, x, y, vx, vy, world):
+        super(Boid, self).__init__(x, y)
         self.vx = vx
         self.vy = vy
         self.world = world
         self.next_x = x
         self.next_y = y
-
         self.max_speed = BOID_MAX_SPEED
         self.dead = False
-
         self.avoiding = False
         self.fleeing = False
-
-    @property
-    def position(self):
-        return self.x, self.y
 
     @property
     def velocity(self):
@@ -70,7 +73,7 @@ class Boid(object):
     @property
     def neighbours(self):
         """
-        The set of other boids that are within "sight" of this boid
+        The set of other boids that are within "sight" of this boid (excluding itself)
         """
         return self.world.neighbour_sets[self]
 
@@ -81,10 +84,15 @@ class Boid(object):
         """
         return self.world.predator_sets[self]
 
+    def distance(self, other):
+        """
+        The distance between this boid and another boid/predator __in the neighbourhood__.
+        """
+        return self.world.distances[self, other]
+
     def calculate_forces(self):
         """
-        The force calculations have been joined into a single function for performance reasons,
-        doing more work in a single loop instead of a little work in multiple loops.
+        The force calculations have been joined into a single function for performance reasons.
         """
         forces = {
             'separation': (0, 0),
@@ -98,7 +106,7 @@ class Boid(object):
         flight_x, flight_y = 0.0, 0.0
         for predator in self.predators:
             self.fleeing = True
-            distance = self.world.distances[self, predator]
+            distance = self.distance(predator)
             if distance < PREDATOR_RADIUS:
                 dead = self.die()
                 if dead:
@@ -138,7 +146,7 @@ class Boid(object):
 
                 if intersection:
                     self.avoiding = True
-                    factor = 1 - distance / self.world.neighbourhood_radius
+                    factor = 1 - (distance - obstacle.r) / self.world.neighbourhood_radius
                     future_x = self.x + distance * normalized_vx
                     future_y = self.y + distance * normalized_vy
 
@@ -164,7 +172,7 @@ class Boid(object):
         for boid in self.neighbours:
             distance = self.world.distances[self, boid]
             factor = 1 - distance / self.world.neighbourhood_radius
-            nvx, nvy = normalize_vector(boid.vx, boid.vy)
+            nvx, nvy = boid.normalized_velocity
             sum_vx += nvx
             sum_vy += nvy
 
@@ -244,15 +252,10 @@ class Boid(object):
         return self.dead
 
 
-class Obstacle(object):
+class Obstacle(CartesianWorldObject):
     def __init__(self, x, y, r):
-        self.x = x
-        self.y = y
+        super(Obstacle, self).__init__(x, y)
         self.r = r
-
-    @property
-    def position(self):
-        return self.x, self.y
 
     def point_within(self, x, y):
         return point_within_circle((x, y), self.position, self.r)
@@ -398,6 +401,12 @@ class BoidWorld(object):
         for boid in self.boids:
             boid.dead = False
 
+    def set_distance(self, a, b, distance):
+        """
+        Sets the distance with both key permutations
+        """
+        self.distances[a, b] = self.distances[b, a] = distance
+
     def find_neighbours(self):
         """
         This logic was moved out of the Boid/Predator classes
@@ -424,7 +433,7 @@ class BoidWorld(object):
                 if distance <= self.neighbourhood_radius:
                     self.neighbour_sets[boid].add(other_boid)
                     self.neighbour_sets[other_boid].add(boid)
-                    self.distances[boid, other_boid] = self.distances[other_boid, boid] = distance
+                    self.set_distance(boid, other_boid, distance)
 
             for predator in self.predators:
                 distance = boid.shortest_distance(predator.x, predator.y)
@@ -432,4 +441,4 @@ class BoidWorld(object):
                 if distance <= self.neighbourhood_radius:
                     self.predator_sets[boid].add(predator)
                     self.prey_sets[predator].add(boid)
-                    self.distances[boid, predator] = self.distances[predator, boid] = distance
+                    self.set_distance(boid, predator, distance)
