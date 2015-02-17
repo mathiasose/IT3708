@@ -70,6 +70,12 @@ def keydown_handler(world, event):
         world.cohesion_weight += ADJUST_WEIGHT
     elif event.key == pygame.K_d:
         world.cohesion_weight -= ADJUST_WEIGHT
+    elif event.key == pygame.K_r:
+        world.neighbourhood_radius += BOID_RADIUS
+    elif event.key == pygame.K_f:
+        world.neighbourhood_radius -= BOID_RADIUS
+        if world.neighbourhood_radius <= 0:
+            world.neighbourhood_radius = BOID_RADIUS
     elif event.key == pygame.K_t:
         world.tick += ADJUST_TICK
     elif event.key == pygame.K_g:
@@ -78,6 +84,8 @@ def keydown_handler(world, event):
             world.tick = 0
     elif event.key == pygame.K_SPACE:
         world.paused = not world.paused
+    elif event.key == pygame.K_0:
+        world.change_scenario(0)
     elif event.key == pygame.K_1:
         world.change_scenario(1)
     elif event.key == pygame.K_2:
@@ -96,21 +104,25 @@ def keydown_handler(world, event):
         world.add_predator()
     elif event.key == pygame.K_RETURN:
         world.clear_obstacles()
+    elif event.key == pygame.K_BACKSPACE:
+        world.clear_predators()
+    elif event.key == pygame.K_QUOTE:
         world.resurrect_boids()
     else:
         return
 
-    print("sep: {}\tali: {}\tcoh: {}".format(world.separation_weight, world.alignment_weight, world.cohesion_weight))
+    print("sep: {}\tali: {}\tcoh: {}\tr: {}".format(
+        world.separation_weight, world.alignment_weight, world.cohesion_weight, world.neighbourhood_radius
+    ))
 
 
-def boids_pygame(world):
+def run_boids_pygame(world):
     pygame.init()
-    font = pygame.font.SysFont("monospace", 15)
 
     window = pygame.display.set_mode(WINDOW_DIMENSIONS)
 
-    for boid in world.boids:
-        colors[boid] = random_color()
+    # for boid in world.boids:
+    # colors[boid] = random_color()
 
     while True:
         if not world.paused:
@@ -121,7 +133,7 @@ def boids_pygame(world):
         window.fill(BACKGROUND)
 
         for obstacle in world.obstacles:
-            pygame.draw.circle(window, FOREGROUND, obstacle.position, obstacle.r)
+            pygame.draw.circle(window, (255, 255, 255), obstacle.position, obstacle.r)
 
         for boid in world.boids:
             try:
@@ -133,7 +145,7 @@ def boids_pygame(world):
                 x=boid.x,
                 y=boid.y,
                 rotation=heading(boid.vx, boid.vy),
-                color=(255, 0, 0) if boid.dead else FOREGROUND
+                color=(255, 0, 0) if boid.dead else (255, 255, 0) if boid.avoiding or boid.fleeing else FOREGROUND
             )
             pygame.draw.polygon(window, shape.color, shape.shape)
 
@@ -157,10 +169,5 @@ def boids_pygame(world):
             elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                 x, y = event.pos
                 world.add_obstacle(x, y)
-                # else:
-                # print(event)
-
-        label = font.render("Some text!", 1, (255, 255, 0))
-        window.blit(label, (100, 100))
 
         sleep(world.tick)
