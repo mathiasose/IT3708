@@ -5,9 +5,8 @@ from utils import f
 
 def roulette(population, scaling_func, **kwargs):
     """
-    an individual may be part of multiple pairs,
-    but not the same pairing multiple times
-    nor in a pair with itself
+    generates pairs with the roulette method.
+    requires a scaling_func to scale the "slices"
     """
 
     def generate_roulette():
@@ -46,8 +45,7 @@ def roulette(population, scaling_func, **kwargs):
     while len(pairs) < n_pairs:
         a, b = spin(), spin()
 
-        # if a == b or (a, b) in pairs or (b, a) in pairs:
-        # continue
+        # no checks for a==b or (a, b) in pairs here, it gets stuck in a loop sometimes
 
         pairs.append((a, b))
 

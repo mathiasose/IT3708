@@ -7,6 +7,10 @@ random_bool = lambda: random.getrandbits(1)
 
 
 def splice(a, b):
+    """
+    pick a point to clip the parent genomes,
+    splice together one part from each parent
+    """
     if random_bool():  # 50% chance to reorder the two parents
         a, b = b, a
 
@@ -15,6 +19,9 @@ def splice(a, b):
 
 
 def mix(a, b):
+    """
+    for each component, randomly pick a value from a random parent
+    """
     return char_list_to_str(a[i] if random_bool() else b[i] for i in range(len(a)))
 
 

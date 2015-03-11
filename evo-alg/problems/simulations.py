@@ -118,10 +118,10 @@ GLOBALLY_SURPRISING = {
 }
 
 SIMULATIONS = [
-    # ONE_MAX,
+    ONE_MAX,
     LOLZ,
-    # LOCALLY_SURPRISING,
-    # s
+    LOCALLY_SURPRISING,
+    GLOBALLY_SURPRISING
 ]
 
 if __name__ == "__main__":
