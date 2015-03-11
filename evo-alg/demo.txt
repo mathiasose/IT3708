@@ -1,0 +1,119 @@
+POP = 200
+S=3
+found in 745 generations
+S=3, L=236: K, S, N, M, A, M, F, C, R, P, T, T, D, Q, A, S, M, P, F, D, R, L, K, H, H, P, K, O, P, N, J, O, A, B, Q, I, L, G, F, Q, M, C, C, G, I, F, I, T, B, K, F, G, J, L, D, C, L, T, A, P, O, N, N, S, K, B, G, B, M, J, E, G, C, Q, G, N, F, E, A, L, L, N, O, D, O, O, S, J, D, E, O, B, F, L, F, J, G, A, I, J, F, R, B, E, Q, O, C, J, S, T, S, P, H, B, B, J, K, M, N, Q, H, N, E, F, P, R, R, A, Q, R, H, Q, J, I, M, G, Q, L, S, O, R, D, M, D, D, L, R, M, S, I, A, K, A, N, R, S, D, A, A, D, F, B, S, G, R, G, S, H, A, T, F, T, P, Q, T, J, Q, F, N, D, H, C, I, E, K, R, K, T, Q, E, T, L, J, C, A, F, H, O, T, K, N, G, E, B, D, P, S, Q, P, L, I, S, C, S, E, J, B, L, C, H, K, J, H, J, P, A, O, E, H, T, M, B, O, M, K, I
+
+S=4
+found in 406 generations
+S=4, L=243: A, C, I, Q, E, I, D, H, R, O, F, Q, K, D, K, S, A, I, J, S, K, P, R, N, G, Q, A, S, C, D, B, R, D, A, H, F, J, F, L, J, D, P, I, C, T, N, T, M, P, Q, T, S, E, G, B, F, P, T, C, S, F, H, J, N, R, P, O, Q, H, T, J, O, H, H, N, P, D, G, M, O, L, F, B, N, I, A, B, K, E, A, J, E, J, G, A, N, J, A, T, G, O, S, G, F, T, H, Q, C, H, C, J, T, T, O, B, B, D, C, O, I, B, E, R, R, L, K, C, E, P, L, L, G, C, C, Q, G, T, B, M, T, P, C, A, D, T, E, N, B, H, O, A, M, L, H, G, K, F, E, H, L, O, O, M, R, I, K, N, N, Q, N, C, F, M, E, M, K, T, K, A, R, T, F, I, N, L, E, K, H, P, M, M, N, D, N, E, L, B, P, S, Q, D, Q, P, B, I, F, A, Q, J, Q, S, N, K, M, A, L, C, K, Q, L, I, R, S, T, I, I, T, R, E, S, D, M, G, H, S, S, M, C, M, B, O, G, L
+
+S=5
+found in 569 generations
+S=5, L=236: F, H, S, H, K, B, E, L, M, B, D, P, L, L, T, T, R, E, P, S, E, R, P, B, L, K, C, C, K, R, H, G, G, C, T, Q, M, I, A, G, F, F, P, K, L, O, P, R, A, S, M, O, N, A, C, O, I, E, K, P, H, D, S, S, F, B, P, N, O, A, J, D, F, O, T, J, F, T, M, S, D, K, O, H, Q, K, S, I, Q, N, S, N, L, C, P, G, H, P, O, M, J, K, I, N, E, H, R, G, M, G, T, D, B, G, R, T, A, R, C, E, G, D, O, G, A, L, F, S, G, I, J, H, L, S, L, P, A, B, T, L, A, Q, Q, C, R, L, Q, S, B, N, K, G, O, D, H, H, N, B, R, N, T, I, C, F, K, E, T, E, N, C, A, F, C, G, N, N, J, J, S, T, B, Q, P, P, F, E, M, R, M, L, G, B, J, N, R, J, G, E, C, Q, L, H, I, G, P, Q, O, C, L, J, O, F, N, P, D, A, K, D, E, A, O, O, R, S, R, I, B, A, M, Q, J, T, C, M, D, C
+
+S=6
+found in 903 generations
+S=6, L=259: P, G, B, D, R, P, A, R, L, M, L, G, O, S, K, B, Q, C, H, Q, I, I, R, N, H, N, S, D, G, F, J, T, O, H, I, O, T, G, E, M, C, E, O, L, S, Q, M, T, B, S, A, F, E, B, M, B, P, B, O, E, R, A, S, S, H, K, F, C, L, P, H, J, B, B, N, C, P, N, K, T, L, D, F, I, K, R, E, K, G, J, S, B, R, R, Q, O, I, P, T, T, F, P, F, Q, E, D, T, C, J, C, S, E, A, Q, Q, J, H, D, K, L, I, E, H, L, K, S, O, G, Q, G, C, A, O, A, T, Q, T, P, K, M, N, M, G, S, J, R, D, P, O, J, K, C, Q, L, J, L, B, E, T, S, N, Q, D, A, I, N, N, I, Q, A, H, G, T, E, G, K, Q, F, L, C, D, B, I, C, B, A, A, D, O, O, F, O, D, C, N, E, F, S, C, T, K, E, S, F, R, T, D, Q, S, L, H, C, R, M, D, L, N, R, G, N, G, A, L, A, C, G, L, E, L, T, J, M, H, P, J, O, K, P, I, T, H, S, G, I, H, M, K, N, T, I, J, D, M, Q, R, F, N, O, P
+
+S=7
+found in 997 generations
+S=7, L=234: M, T, N, R, B, M, N, D, R, H, A, A, E, L, M, I, Q, M, P, R, M, O, Q, K, C, J, Q, C, Q, G, R, K, O, A, Q, R, R, N, P, S, K, H, L, F, N, O, K, D, Q, A, N, J, L, D, P, F, D, H, G, S, I, N, C, S, R, E, S, D, C, M, F, H, D, S, J, T, R, D, J, B, S, F, I, I, G, B, R, O, M, L, E, T, C, H, I, M, H, H, C, A, S, M, R, J, S, Q, I, P, H, B, J, J, C, T, L, O, T, P, Q, T, Q, L, G, L, K, L, P, M, G, H, E, P, E, J, R, G, D, G, G, K, G, F, T, A, O, R, F, Q, E, G, A, I, O, C, K, E, H, T, H, F, A, K, J, O, D, I, F, R, C, E, M, B, E, I, B, T, J, F, M, Q, B, P, G, Q, D, D, N, B, L, B, O, H, O, L, J, A, G, O, P, O, O, S, O, F, L, I, S, C, G, P, T, T, F, J, G, C, L, L, R, S, E, E, C, N, S, L, T, I, J, K, S, B, B, Q
+
+S=8
+found in 424 generations
+S=8, L=242: T, E, H, A, Q, J, B, D, T, C, C, P, P, F, M, R, B, O, R, E, D, C, E, J, F, O, D, J, S, J, E, F, F, D, H, K, L, F, N, D, R, L, L, N, L, R, T, K, H, S, H, P, I, M, M, F, E, B, A, N, I, E, Q, G, P, B, C, G, Q, L, K, T, P, C, F, R, F, G, F, H, T, G, S, G, R, N, P, E, G, I, Q, O, T, M, K, M, G, G, O, K, I, H, R, O, J, H, C, B, R, K, O, P, M, J, R, A, A, H, I, O, I, N, A, T, S, R, H, H, M, E, T, D, S, S, B, B, G, M, H, N, K, N, C, H, O, O, A, R, I, B, N, E, S, C, N, O, C, J, I, K, G, N, J, G, H, L, G, A, M, L, I, L, P, Q, A, P, K, A, K, K, B, K, Q, I, R, S, F, J, J, C, L, Q, N, M, T, Q, F, Q, H, J, M, O, G, E, M, A, L, H, Q, S, D, B, F, A, O, B, S, N, N, S, K, P, A, D, I, G, B, I, T, H, D, P, H, B, J, N, R, D, L, A, F, B
+
+S=9
+found in 617 generations
+S=9, L=247: K, I, O, O, E, S, J, R, N, G, L, C, N, Q, A, R, D, S, S, P, D, D, B, I, I, S, G, E, C, A, Q, Q, F, A, D, M, O, Q, R, F, J, B, Q, N, R, P, F, Q, J, P, E, N, S, D, T, F, B, E, B, B, H, I, C, J, K, B, K, M, R, T, A, O, N, H, O, I, J, A, I, H, J, D, R, A, M, Q, G, R, S, T, R, G, N, I, A, K, T, K, S, F, K, R, K, E, T, Q, L, N, L, O, L, H, G, O, K, H, S, I, G, T, T, I, K, K, O, G, P, L, T, E, D, N, O, B, J, Q, H, P, C, O, D, O, T, B, C, G, D, A, G, C, B, M, C, D, I, N, B, N, K, F, S, Q, C, L, G, F, D, H, A, P, K, C, Q, I, L, J, N, P, H, C, M, M, A, S, H, H, Q, P, S, K, P, P, Q, T, O, F, N, A, J, J, H, T, L, D, K, N, J, F, O, S, M, T, H, R, H, K, Q, D, E, J, T, C, E, P, A, N, N, M, J, C, T, G, A, L, B, T, P, J, O, M, P, I, P, N, F, E, R
+
+S=10
+found in 789 generations
+S=10, L=233: A, S, K, B, J, R, J, P, L, O, N, G, F, I, Q, J, A, A, E, J, N, T, E, L, L, M, E, H, I, J, G, I, D, J, F, E, B, N, L, S, G, A, B, Q, C, N, C, I, P, S, R, I, E, A, H, A, O, E, I, M, K, S, D, P, I, T, B, P, A, Q, E, O, R, M, M, Q, B, D, G, P, K, Q, A, G, L, H, O, P, D, C, T, L, P, T, T, F, B, G, C, B, K, G, H, P, C, E, D, F, C, H, E, E, C, R, R, S, C, K, K, M, R, E, R, F, L, T, Q, I, C, D, B, S, Q, R, G, R, N, F, H, G, E, M, D, N, I, K, L, K, D, O, L, Q, S, B, L, R, Q, N, P, N, B, I, H, D, M, B, F, Q, K, H, N, R, D, T, M, P, P, F, P, E, G, M, J, D, I, O, H, K, P, Q, M, O, J, T, S, F, S, I, L, A, M, L, J, I, F, O, G, K, C, M, G, G, B, H, S, E, F, T, R, T, N, A, N, M, T, J, H, C, A, K, O, O, C
+
+S=11
+found in 520 generations
+S=11, L=233: S, N, S, G, R, D, S, O, C, G, H, S, M, G, J, E, H, J, G, E, A, T, R, P, M, D, O, J, J, D, C, E, L, P, B, E, Q, P, N, F, S, J, M, Q, B, L, E, R, K, S, I, J, Q, N, I, O, P, P, E, J, S, A, G, I, H, F, H, R, I, S, P, A, N, J, H, M, T, Q, T, P, D, L, A, D, Q, C, J, I, D, T, F, R, B, A, E, N, T, G, D, K, P, R, T, I, N, K, E, T, C, T, K, O, T, L, H, H, D, A, S, L, T, S, B, D, I, K, F, O, G, G, L, O, B, Q, J, A, B, P, I, E, O, H, B, S, F, Q, R, R, F, K, D, B, K, M, M, S, C, O, M, R, L, K, G, F, A, R, A, K, I, C, L, I, I, L, F, G, C, K, Q, M, O, E, K, A, H, K, L, N, O, D, D, F, D, P, T, B, F, L, J, N, L, C, Q, F, B, G, N, C, M, A, F, F, T, O, N, G, M, H, O, Q, K, K, H, L, D, G, O, I, M, B, M, L, R
+
+S=12
+found in 900 generations
+S=12, L=279: B, B, K, A, G, N, J, Q, J, P, E, D, N, Q, O, Q, R, B, O, E, R, S, H, A, R, M, A, P, D, A, J, F, S, K, D, G, I, K, N, A, N, S, Q, Q, I, N, E, I, Q, N, B, L, H, M, C, S, C, L, F, K, T, I, H, H, P, I, F, H, F, P, N, G, G, T, R, E, B, T, K, B, D, S, B, M, I, J, B, F, C, P, S, S, T, L, E, H, E, P, K, H, N, R, D, P, M, B, C, D, O, A, O, L, P, R, R, C, Q, S, G, R, F, I, R, N, O, O, C, M, O, D, T, N, T, G, L, Q, M, H, R, J, O, M, N, K, G, K, I, I, A, M, T, J, A, I, C, E, A, C, T, C, N, H, O, K, P, B, J, S, I, S, J, I, O, N, C, G, Q, H, C, A, T, S, R, A, A, H, J, D, Q, L, L, B, R, I, M, S, E, Q, G, D, F, G, P, F, N, P, G, B, Q, T, Q, K, Q, E, C, B, H, G, O, P, O, T, B, P, H, T, P, P, J, K, F, Q, F, F, D, I, E, E, O, F, T, M, F, R, L, D, J, T, O, G, A, F, O, R, T, H, K, M, D, L, C, O, S, N, M, J, J, M, L, M, M, E, N, I, B, S, D, E, G
+
+S=13
+found in 760 generations
+S=13, L=249: Q, K, J, O, O, T, G, B, E, G, T, K, I, B, C, P, G, N, K, E, I, D, N, T, T, R, H, P, E, Q, A, I, N, Q, F, N, C, Q, M, P, A, D, C, M, R, A, R, Q, S, K, H, E, B, F, F, Q, L, I, A, H, G, H, A, T, D, Q, N, S, Q, B, P, K, D, O, B, G, A, E, R, D, E, A, Q, Q, O, C, K, C, O, N, L, T, C, L, O, L, L, S, P, J, G, I, G, L, K, R, N, F, C, E, E, O, S, A, B, L, N, M, D, A, P, M, E, K, O, M, C, T, S, O, D, I, J, N, H, M, M, S, M, K, B, O, H, N, O, J, E, T, J, T, O, G, G, D, L, A, L, M, O, I, M, J, S, H, K, T, I, S, G, R, I, K, S, I, R, M, F, M, B, B, J, C, C, J, D, P, L, G, E, N, P, S, F, H, I, F, L, H, Q, J, P, D, D, T, Q, T, E, S, J, M, T, M, A, N, E, F, B, N, B, K, G, J, I, H, J, Q, I, P, F, R, J, H, S, B, S, C, B, H, F, I, Q, P, C, G, P, H, B, A, O
+
+S=14
+found in 953 generations
+S=14, L=269: C, C, F, N, Q, E, H, K, M, E, Q, B, B, P, J, H, B, J, A, F, H, A, K, J, N, H, L, D, F, E, T, A, A, Q, L, F, S, J, D, R, I, B, O, L, K, P, C, D, P, K, A, T, P, B, C, O, P, D, B, D, C, B, R, M, C, K, K, G, T, B, H, P, A, I, F, P, T, C, H, T, G, J, J, S, S, M, D, Q, N, G, H, C, S, B, S, L, Q, O, T, J, F, B, E, R, D, J, M, S, P, G, F, I, P, E, L, G, N, C, M, K, Q, Q, I, S, O, N, K, D, M, A, L, I, L, J, R, T, R, L, O, E, C, T, M, I, J, C, L, L, B, L, A, N, S, C, E, N, N, M, M, H, F, G, M, L, M, N, I, O, A, O, C, J, T, O, J, Q, P, F, D, D, I, I, R, N, T, D, H, J, P, S, F, O, I, N, B, Q, K, C, Q, J, E, I, K, H, S, D, O, S, E, K, R, F, A, J, O, M, R, G, R, K, L, C, G, Q, A, G, D, L, H, G, P, R, Q, H, O, G, B, T, N, P, Q, S, T, E, P, I, A, P, H, M, G, A, H, E, F, K, N, D, S, I, E, O, R, E, D, T, L, N, A
+
+S=15
+found in 975 generations
+S=15, L=239: T, H, I, O, A, F, F, E, J, C, L, S, D, N, Q, B, M, S, L, H, H, D, K, B, Q, I, Q, T, F, D, I, P, H, P, T, G, I, N, H, O, E, H, E, R, A, H, L, N, D, C, T, K, J, I, S, Q, H, S, B, K, H, A, R, P, S, T, Q, C, D, T, P, L, A, Q, S, G, D, E, P, I, M, K, M, A, A, I, C, K, F, N, K, O, D, H, M, L, D, M, F, I, A, J, F, T, D, F, R, L, L, Q, J, Q, F, A, E, B, B, R, S, M, R, R, G, N, O, T, C, P, F, K, R, F, C, I, G, J, B, H, N, C, N, L, T, A, B, L, C, J, O, O, C, A, O, K, K, T, L, I, R, C, H, J, E, D, G, C, R, N, T, S, H, K, S, A, L, M, M, I, L, R, M, H, C, C, B, O, F, B, E, S, S, C, O, S, J, N, I, F, J, L, P, O, Q, L, K, P, R, J, M, E, G, B, D, B, F, M, T, J, D, D, L, G, O, N, P, K, I, J, G, H, R, E, O, P, E, K, N, J, A
+
+S=16
+found in 955 generations
+S=16, L=256: T, M, I, F, C, B, D, K, D, L, F, K, I, G, E, M, B, C, S, K, N, T, E, H, O, L, H, F, N, O, N, J, T, B, P, J, N, R, L, P, D, R, Q, K, B, T, D, G, G, H, L, D, Q, L, I, C, C, E, C, F, S, L, Q, S, M, N, G, N, I, B, M, O, R, E, L, M, S, G, P, F, I, P, A, G, S, A, N, P, E, E, P, L, C, G, C, L, E, D, E, A, C, I, L, A, O, J, D, T, N, Q, E, Q, N, F, E, R, H, G, J, M, Q, M, D, C, R, P, O, F, O, B, E, K, E, N, H, C, K, J, H, H, K, Q, O, T, C, N, E, B, L, N, S, F, A, B, J, I, H, I, K, T, A, R, T, I, D, M, K, A, J, G, L, S, N, A, A, F, D, J, A, M, T, Q, I, T, O, S, P, B, H, P, T, L, J, Q, G, A, I, M, F, J, O, M, P, Q, F, G, Q, C, Q, P, S, D, N, L, O, A, L, R, R, K, K, C, J, J, R, M, H, J, S, Q, H, D, O, I, R, O, O, H, B, I, N, N, B, K, R, B, B, G, K, P, C, P, P, R, C, A
+
+S=17
+found in 593 generations
+S=17, L=247: S, N, P, R, H, R, N, B, I, G, Q, F, C, D, I, A, S, H, N, D, N, O, L, Q, L, G, P, N, R, K, M, D, O, N, F, O, Q, E, E, I, P, D, P, F, D, E, A, L, M, I, I, B, R, R, L, E, Q, M, A, F, P, H, H, K, S, B, G, N, L, I, E, J, T, D, H, C, J, S, D, C, F, B, A, R, M, G, F, T, H, L, H, B, M, T, F, R, G, G, B, B, K, Q, K, L, B, E, O, D, M, R, C, R, D, L, J, P, A, H, E, L, T, M, K, F, E, C, O, K, N, E, F, K, A, M, O, H, A, K, I, C, K, O, T, E, D, S, F, J, N, N, S, T, P, B, T, N, K, J, M, B, D, Q, O, E, S, I, S, P, E, T, A, A, E, M, Q, D, D, J, O, P, L, C, G, T, I, O, B, Q, C, B, H, G, M, J, G, O, I, K, B, F, I, J, E, P, J, H, S, L, R, P, I, M, P, T, S, C, L, A, B, S, G, K, K, T, Q, S, Q, R, A, I, R, J, J, A, Q, H, T, C, S, A, D, B, P, K, D, F, L
+
+S=18
+found in 922 generations
+S=18, L=238: N, H, Q, A, R, T, R, H, J, I, T, Q, Q, B, L, F, M, E, I, L, L, B, A, O, C, C, T, M, H, H, I, D, S, R, P, M, M, C, D, L, T, G, S, C, P, F, N, S, B, T, L, Q, N, I, R, O, M, T, P, O, P, G, O, Q, P, Q, C, O, A, T, C, S, H, D, O, S, O, F, F, T, A, M, P, S, L, I, P, H, C, E, K, F, D, K, I, J, H, R, E, N, Q, D, Q, E, L, J, T, J, N, M, S, I, N, A, A, S, D, A, H, G, I, O, E, H, L, G, G, H, F, E, R, F, H, T, T, S, F, Q, T, B, H, N, D, H, O, B, E, A, N, C, H, P, P, K, H, K, R, A, Q, H, E, P, A, K, T, K, P, L, S, T, F, L, P, B, B, N, O, J, G, F, A, G, A, D, C, J, L, M, L, H, M, N, T, I, I, H, S, M, I, G, J, B, G, N, E, Q, L, A, B, D, G, E, B, S, G, B, P, C, F, I, F, G, C, A, C, I, K, O, I, E, S, K, C, G, R, R, Q, G
+
+S=19
+found in 346 generations
+S=19, L=251: R, B, R, F, P, P, D, I, B, H, L, J, O, P, G, T, P, O, A, G, P, E, D, G, J, I, R, N, M, B, O, F, L, L, Q, N, J, K, J, E, J, Q, I, Q, D, E, H, N, P, K, L, N, F, N, D, J, T, H, D, Q, J, P, B, M, J, L, K, N, N, B, S, S, F, I, M, L, F, B, T, Q, R, A, O, E, L, P, Q, L, D, D, C, L, C, T, G, C, F, S, N, O, N, H, A, Q, F, K, Q, B, Q, A, N, E, I, S, D, M, A, D, A, C, B, P, M, I, A, S, T, R, E, A, R, S, B, A, F, J, B, G, Q, G, I, F, E, T, K, S, K, E, E, B, D, K, F, G, E, M, S, E, G, M, O, R, R, Q, O, J, C, A, I, J, H, I, E, N, R, C, E, O, M, T, I, P, J, D, L, H, R, I, N, Q, M, E, P, I, O, O, I, I, D, N, T, E, C, I, T, J, S, H, P, C, P, R, L, M, K, H, B, K, D, F, F, H, C, K, B, C, D, P, F, M, F, O, H, H, T, A, K, O, S, Q, T, N, L, G, N, G, F, R, M, P, N
+
+S=20
+found in 838 generations
+S=20, L=266: E, L, O, S, O, Q, R, D, H, N, I, P, P, K, O, I, Q, K, Q, B, M, S, D, E, N, L, K, H, B, Q, P, D, M, C, K, N, O, A, M, K, J, C, A, H, D, D, A, E, D, F, G, T, C, L, C, G, P, E, E, I, J, A, C, H, T, I, I, C, C, Q, O, C, M, E, T, M, N, R, G, Q, J, D, C, N, H, E, R, T, R, P, N, E, G, L, I, G, J, K, K, G, N, N, Q, I, B, O, B, P, A, S, J, N, G, D, G, I, K, A, A, K, M, Q, Q, L, B, C, E, C, S, G, K, R, E, H, Q, N, D, B, N, J, T, L, N, C, I, E, F, B, D, O, P, J, P, I, H, O, T, Q, S, L, H, R, B, T, E, K, F, S, R, I, O, K, B, A, T, D, N, M, O, F, M, D, K, I, S, K, T, N, B, J, H, L, E, P, F, H, M, L, Q, E, A, R, R, L, P, G, S, P, L, A, P, R, C, B, S, F, L, D, Q, G, H, S, S, I, T, G, B, R, K, L, S, T, P, M, B, E, B, F, A, G, A, F, O, G, M, T, A, D, L, M, A, O, R, N, T, O, H, H, C, F, R, J, J, M, R, O
+
+S=21
+found in 561 generations
+S=21, L=231: F, C, E, D, F, Q, M, O, Q, J, J, C, O, G, E, H, F, J, H, H, O, K, E, J, A, I, J, E, B, A, N, S, R, E, R, B, P, R, Q, D, S, B, R, N, R, M, P, J, Q, I, H, N, B, K, T, M, D, B, M, G, F, K, C, M, H, D, J, O, B, J, P, N, L, N, E, E, O, D, P, P, Q, L, S, S, K, O, P, S, P, G, A, Q, B, G, Q, G, P, T, T, I, N, D, M, R, C, S, A, A, B, T, D, N, F, A, D, G, R, R, S, D, Q, C, B, L, Q, P, H, R, L, M, C, K, H, S, T, A, K, L, C, L, H, I, L, G, D, I, K, D, L, K, K, M, A, G, O, R, F, B, D, A, R, A, O, H, M, N, A, M, I, T, F, G, J, T, J, N, J, R, T, G, G, S, M, K, F, F, E, G, K, Q, A, T, K, J, G, N, M, S, C, H, Q, K, S, H, B, C, F, M, E, T, O, A, C, T, C, J, F, R, K, N, H, P, L, E, F, N, P, E, C, D, E
+
+S=22
+found in 783 generations
+S=22, L=242: N, S, H, K, I, H, N, Q, C, D, Q, I, E, S, G, A, K, Q, G, D, T, N, D, A, P, N, P, D, N, F, A, D, J, C, P, F, H, Q, L, S, E, A, Q, K, O, B, F, D, E, F, C, R, K, C, G, E, E, L, C, I, D, P, G, T, D, M, G, H, I, G, S, D, O, S, I, O, A, S, N, A, A, B, A, J, A, N, I, B, G, M, F, S, Q, H, G, P, L, O, T, B, K, R, E, M, A, G, C, L, M, J, H, L, Q, B, B, Q, M, L, G, F, K, J, F, G, L, F, R, R, B, M, E, H, J, E, C, T, T, A, O, P, P, B, J, M, B, H, P, I, F, L, I, N, G, I, J, B, S, F, N, E, N, N, C, C, S, L, E, B, D, R, I, K, M, D, H, B, P, H, C, J, D, I, I, P, C, Q, F, T, J, O, M, T, F, P, Q, S, K, T, H, F, E, P, O, N, R, S, S, P, M, Q, A, R, P, E, O, C, B, E, J, G, K, P, J, S, O, J, R, M, M, R, N, H, D, F, Q, N, B, I, L, L, T, M
+
+S=23
+
+S=24
+found in 773 generations
+S=24, L=264: F, I, N, O, P, H, E, T, D, J, F, O, F, H, L, S, M, H, Q, Q, H, P, B, Q, C, E, L, P, P, Q, J, T, K, E, M, L, K, D, K, T, G, M, K, P, M, G, E, J, O, G, H, F, Q, I, B, S, J, D, A, B, M, J, K, S, Q, R, H, G, D, M, N, E, D, G, I, C, D, R, D, S, R, C, L, A, K, R, I, P, N, T, H, H, K, Q, B, T, R, F, E, O, R, B, H, B, E, P, J, R, N, Q, F, K, J, E, R, A, E, F, P, F, R, L, O, M, P, C, B, G, C, F, M, A, D, P, G, S, C, I, G, Q, O, S, N, K, N, I, H, S, E, I, D, H, T, N, J, G, T, T, M, M, Q, P, D, Q, M, C, O, E, H, N, M, E, S, H, I, J, N, L, I, O, H, A, J, L, F, T, P, E, E, Q, E, G, A, I, L, T, E, N, B, B, O, A, C, H, D, T, C, N, G, L, M, B, L, D, B, I, K, B, C, G, B, J, I, M, I, T, S, G, N, N, P, S, A, R, T, L, R, Q, L, B, P, K, F, G, J, H, O, I, A, Q, N, H, J, S, O, C, J, B, K, I, Q, A, S, D
+
+S=25
+
+S=26
+
+S=27
+
+S=28
+
+S=29
+
+S=30
+
+S=31
+
+S=32
+
+S=33
+
+S=34
+
+S=35
+
+S=36
+
+S=37
+
+S=38
+
+S=39
+
+S=40
+
