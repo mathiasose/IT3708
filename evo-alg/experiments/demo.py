@@ -25,130 +25,6 @@ BEST:	1.0
 S=40, L=1000: L, U, n, k, a, R, Y, B, g, h, Z, n, L, h, A, e, i, C, K, j, f, P, k, I, a, K, g, R, H, U, Y, G, B, G, R, A, K, k, L, I, d, h, L, Z, c, O, D, K, T, h, b, m, U, N, D, P, W, L, j, O, a, L, d, U, Q, n, W, H, X, m, j, K, f, m, f, Q, i, V, h, B, B, C, d, E, P, J, L, T, Y, H, E, T, i, c, f, c, A, f, I, M, M, d, G, m, k, V, n, l, L, M, O, c, j, T, X, H, n, A, Y, V, Q, S, X, a, B, D, O, F, M, S, W, Y, b, c, B, f, j, U, k, T, K, H, g, Y, O, K, G, U, V, a, N, E, m, J, X, d, K, i, D, B, J, V, J, c, M, I, K, S, a, F, i, K, e, l, E, i, M, T, V, l, N, C, V, k, g, Z, W, T, E, I, Z, f, A, l, F, Y, k, b, B, k, M, G, N, F, D, V, N, i, Z, J, P, S, d, d, W, R, L, K, I, h, k, d, D, Y, g, C, H, B, U, T, I, L, O, Y, I, B, R, X, L, W, f, D, g, V, W, k, P, O, m, e, K, E, g, f, J, Q, J, O, e, Q, E, U, O, B, X, I, N, j, l, G, k, k, h, D, Q, P, B, c, N, n, f, E, Z, m, G, e, G, H, c, S, f, S, J, i, L, D, U, P, f, C, C, P, Q, R, P, Z, H, I, O, l, C, A, d, a, M, b, M, c, W, I, U, K, D, l, R, T, U, J, a, a, Q, G, M, f, g, a, S, j, k, i, Y, e, j, Q, b, W, U, i, h, S, e, a, D, C, M, Q, Q, h, I, b, Y, A, B, V, V, F, T, H, V, T, Q, m, R, N, e, C, i, U, S, T, N, M, h, i, B, e, m, a, X, i, X, f, W, Z, D, j, H, f, B, j, M, R, b, G, f, F, d, i, R, a, W, X, g, W, F, U, f, Z, R, I, i, Q, c, a, h, U, d, e, I, g, E, b, f, G, P, b, R, C, b, T, R, g, m, d, m, Y, Z, Z, X, Z, F, k, R, U, b, g, n, N, c, Q, F, n, H, R, l, I, S, E, M, i, O, i, n, C, Z, P, F, a, G, b, L, L, m, n, K, n, V, i, f, R, V, L, c, J, H, d, Q, Z, O, C, f, b, l, c, h, F, L, n, F, I, R, c, g, F, l, D, R, D, D, X, c, n, a, T, S, b, C, J, l, X, k, N, X, X, n, Q, Y, K, L, R, f, l, l, K, a, e, e, A, M, e, Z, N, W, l, n, G, d, l, A, T, L, b, N, J, k, f, K, M, P, N, G, T, c, e, E, d, c, i, F, N, f, d, A, A, X, F, V, d, k, D, d, P, M, C, Y, Y, P, P, d, R, n, I, f, O, O, h, N, h, C, j, W, c, k, l, S, R, h, E, l, O, g, J, C, T, D, n, X, G, J, Z, h, j, G, O, L, Q, A, S, n, Y, m, O, G, Z, S, i, N, a, i, G, C, O, f, H, e, S, m, S, C, S, N, m, X, M, D, b, K, h, m, M, F, e, B, L, G, Y, U, e, g, X, S, F, h, H, i, d, Z, d, j, g, M, k, m, l, Z, E, J, A, O, I, W, M, n, O, Q, V, H, D, N, K, l, B, Q, T, d, F, K, m, c, L, l, T, n, S, I, E, R, O, Z, U, W, D, H, S, H, L, C, B, P, g, d, H, T, O, R, F, R, Z, M, B, b, U, I, n, B, M, V, M, X, l, J, f, Y, a, V, Z, j, P, V, Y, j, C, h, d, T, G, X, P, a, b, D, M, j, D, A, J, I, D, e, M, H, k, J, b, S, k, K, c, F, X, Y, X, K, P, T, A, N, V, B, O, E, W, Q, C, c, I, I, C, D, L, E, L, H, m, E, k, O, k, Z, e, H, W, h, P, H, H, F, S, g, I, m, W, b, A, h, a, n, h, T, e, n, i, S, L, S, K, Z, i, j, c, P, m, B, l, a, k, C, Q, l, g, B, d, b, e, O, W, m, i, k, W, d, Y, h, K, A, c, l, h, O, V, O, j, F, H, j, m, b, j, b, J, n, d, f, U, C, a, H, Z, G, a, U, L, X, b, h, J, j, J, g, G, V, g, g, i, A, n, g, S, P, c, C, g, T, g, e, L, B, H, G, K, K, U, R, S, V, E, H, A, Q, I, j, A, W, V, D, F, f, f, n, e, D, k, n, E, j, Y, D, f, h, V, c, b, b, V, j, I, T, F, P, E, K, R, e, J, G, G, c, V, U, j, N, k, U, X, D, i, a, J, W, g
 
 
-trying to find L=44
-found in 1 generations
-S=40, L=44: R, b, M, J, S, L, P, M, L, c, P, T, M, R, F, c, I, a, U, f, f, P, Q, Y, Q, R, n, F, g, U, d, Q, P, l, a, X, P, Y, U, R, g, W, d, E
-
-trying to find L=48
-found in 1 generations
-S=40, L=48: e, V, I, Q, S, X, k, f, U, C, L, c, R, e, R, E, N, Q, d, k, M, k, G, P, V, X, n, M, C, a, k, C, F, d, D, A, a, E, L, M, a, K, i, e, D, U, l, I
-
-trying to find L=52
-found in 1 generations
-S=40, L=52: J, h, e, K, Z, m, l, m, B, h, H, L, k, m, g, j, M, k, k, L, P, M, C, X, k, Y, L, h, j, b, d, I, Y, b, V, E, Y, I, I, j, g, W, R, C, i, a, m, I, F, G, e, L
-
-trying to find L=57
-found in 1 generations
-S=40, L=57: A, R, h, R, V, H, l, j, Q, M, j, Y, c, N, T, L, N, W, f, X, K, R, d, G, R, S, e, c, e, D, W, i, l, W, E, f, O, C, F, b, W, d, O, h, T, N, h, I, X, O, V, E, i, j, m, W, R
-
-trying to find L=62
-found in 1 generations
-S=40, L=62: U, m, e, g, F, C, V, D, Q, a, l, f, A, d, h, P, A, D, B, I, l, Y, V, M, L, Q, W, K, E, Z, n, S, l, Q, G, Q, V, B, Z, i, Q, h, m, T, H, K, J, j, E, Q, K, V, C, L, P, e, j, W, Q, J, A, b
-
-trying to find L=68
-found in 1 generations
-S=40, L=68: M, Q, i, W, R, H, I, n, G, j, U, L, e, N, E, T, T, D, Y, X, G, P, j, W, V, g, Q, e, B, i, f, D, U, H, g, c, S, R, Z, f, n, f, e, m, b, h, c, W, f, O, b, c, j, O, S, Z, g, k, A, R, S, I, K, R, b, f, N, H
-
-trying to find L=74
-found in 1 generations
-S=40, L=74: E, n, A, I, Y, H, H, k, H, V, A, C, Z, i, b, C, b, S, k, X, h, S, e, F, F, G, A, F, V, m, c, V, l, L, j, d, A, i, O, Z, O, T, l, k, Q, b, X, L, E, c, S, F, M, I, Z, n, U, B, N, n, W, J, T, P, g, b, E, Q, H, f, b, i, Z, M
-
-trying to find L=81
-found in 1 generations
-S=40, L=81: i, I, W, L, P, b, S, i, k, U, n, n, H, O, Z, G, O, D, f, d, J, L, X, Z, H, P, S, J, R, j, K, O, U, l, R, a, B, c, E, M, Z, c, T, K, f, A, l, j, O, N, A, E, a, U, I, B, M, N, C, M, D, F, m, K, B, I, R, c, X, B, F, Y, U, P, U, L, A, R, g, j, V
-
-trying to find L=89
-found in 1 generations
-S=40, L=89: Y, F, B, X, f, J, P, Q, X, S, V, k, N, l, g, F, g, f, T, P, H, k, C, S, X, e, F, T, A, T, l, K, K, N, D, Q, V, J, M, N, M, V, B, d, l, D, l, i, A, Y, L, d, G, h, G, U, S, K, e, l, X, A, k, D, F, M, F, A, M, j, U, P, G, W, k, W, i, G, J, C, d, i, I, K, W, Z, j, h, c
-
-trying to find L=97
-found in 1 generations
-S=40, L=97: T, J, E, F, d, i, k, f, I, g, E, G, Q, Y, d, H, c, d, h, H, Z, M, Z, f, c, V, R, n, Y, G, f, U, d, n, E, K, K, N, J, X, e, O, n, I, b, f, W, M, b, Y, H, k, H, J, f, P, d, a, N, l, U, Z, F, V, X, c, M, G, e, H, K, W, L, L, n, H, d, L, f, Y, k, b, h, K, g, W, G, V, I, P, H, B, E, X, R, I, X
-
-trying to find L=106
-found in 1 generations
-S=40, L=106: U, D, i, M, Y, c, Y, Z, n, Q, Q, d, i, Z, d, B, K, Z, P, N, a, n, S, Y, e, Z, c, H, G, O, J, m, U, g, W, l, m, A, a, B, C, k, R, c, P, g, g, l, h, K, J, M, m, k, D, L, G, B, P, d, D, k, G, j, J, g, S, T, L, g, I, n, P, f, d, a, I, D, S, A, T, E, n, h, g, d, O, n, F, E, d, X, M, g, H, R, U, i, i, h, I, h, G, P, F, B
-
-trying to find L=116
-found in 1 generations
-S=40, L=116: Y, L, Z, I, n, T, h, h, E, M, W, l, a, N, W, N, L, R, F, i, Z, C, m, L, B, n, C, D, a, Z, H, j, Q, B, J, e, Y, j, i, Y, R, I, k, f, M, d, l, f, H, O, k, H, f, d, G, d, P, F, Z, F, f, a, m, k, Q, Z, W, I, D, P, T, K, A, U, k, Z, E, C, W, W, K, S, c, M, i, c, T, k, P, I, b, D, j, a, l, G, U, h, j, g, J, A, Y, g, m, b, n, c, a, X, e, P, V, N, B, D
-
-trying to find L=127
-found in 2 generations
-S=40, L=127: W, f, T, S, V, e, m, j, Q, C, H, J, C, c, B, F, F, f, U, d, V, l, C, l, D, P, W, T, L, h, W, D, V, X, J, P, n, V, B, X, X, Y, c, R, X, G, C, G, A, P, Q, T, Y, U, i, n, c, W, R, n, E, D, h, A, R, f, j, N, k, W, l, I, U, K, Y, P, g, j, W, n, K, L, K, E, h, L, Y, Q, a, g, E, G, I, B, j, S, j, b, B, f, c, d, F, U, Q, H, P, H, b, b, h, T, k, J, i, b, F, Y, S, h, B, L, j, f, F, C, S
-
-trying to find L=139
-found in 9 generations
-S=40, L=139: O, M, i, l, L, H, J, d, S, c, K, i, D, T, i, T, E, L, C, T, l, Y, n, X, m, k, h, D, e, C, Q, h, U, P, S, k, M, d, a, b, m, A, N, N, f, B, S, G, A, W, L, Y, h, m, g, Y, K, Z, j, i, d, X, l, G, C, A, M, L, j, d, e, I, B, Z, J, e, X, S, X, B, j, U, E, d, l, X, h, a, P, d, R, X, E, G, k, L, O, k, f, d, P, F, m, I, L, i, J, m, d, F, X, H, g, E, f, n, Z, d, V, l, A, a, C, P, l, B, V, K, e, A, I, P, I, S, N, G, T, f, A
-
-trying to find L=152
-found in 17 generations
-S=40, L=152: k, M, P, J, L, E, O, H, a, c, Q, A, A, V, a, P, R, g, Z, M, Y, S, R, P, h, m, H, C, U, h, M, A, K, W, k, F, d, W, c, e, L, L, V, P, H, g, D, T, N, O, W, m, g, L, f, j, l, k, J, j, C, j, N, K, e, W, T, c, Z, I, N, R, A, W, N, T, L, X, G, D, f, k, g, X, C, m, O, h, F, h, G, M, X, J, e, h, Y, n, f, B, M, B, K, f, l, A, l, j, H, c, R, n, G, F, Y, A, i, N, k, N, Z, V, g, c, h, a, V, N, S, I, U, O, c, E, i, H, f, C, V, Q, Z, m, F, b, i, V, T, R, f, I, C, T
-
-trying to find L=167
-found in 5 generations
-S=40, L=167: L, T, O, h, X, U, n, O, V, m, R, m, e, c, a, k, a, h, N, V, n, f, l, F, E, i, A, g, l, l, I, H, j, G, G, C, m, O, M, j, W, T, B, Z, B, V, N, N, A, F, T, J, H, V, h, h, f, b, m, U, Q, W, A, E, J, j, I, Z, b, Y, i, j, D, Z, O, c, k, g, B, H, N, T, A, A, C, e, S, E, S, V, E, g, n, a, K, g, K, K, I, n, B, G, b, U, D, J, N, W, M, C, R, W, K, f, N, M, Q, D, l, X, D, O, I, j, h, W, Y, j, F, G, Y, H, Q, I, B, e, j, j, Q, M, g, R, n, T, g, S, h, C, b, S, i, m, G, Z, E, d, B, K, F, B, O, D, a, M, M, P, E
-
-trying to find L=183
-found in 23 generations
-S=40, L=183: n, c, h, n, D, I, n, m, X, M, N, e, g, R, f, G, E, j, T, D, G, Q, B, c, B, Y, a, R, U, M, m, g, C, f, i, H, e, j, G, V, g, F, P, R, F, U, g, G, m, l, a, f, Z, n, e, i, N, n, E, O, N, A, S, g, V, Z, m, c, n, F, E, m, J, W, F, k, J, K, D, c, G, b, b, B, C, X, N, P, N, S, d, j, P, h, M, c, E, Q, k, d, M, D, X, F, g, n, d, V, k, N, Z, S, k, K, V, a, M, E, H, S, L, c, b, Y, M, X, Y, T, E, G, L, D, a, W, f, F, n, A, B, R, a, l, i, G, d, W, N, L, O, Z, b, G, S, m, T, F, L, Y, P, e, O, i, J, L, L, E, E, U, c, c, H, m, i, O, m, d, f, n, Z, l, f, D, F
-
-trying to find L=201
-found in 20 generations
-S=40, L=201: V, i, N, k, F, H, b, e, N, D, m, k, J, K, I, b, G, B, n, Z, h, a, J, U, d, n, W, E, a, X, D, h, l, i, e, M, N, L, Z, E, H, i, D, i, f, N, O, M, A, h, b, S, k, a, h, G, Z, C, i, c, i, C, P, b, Q, O, O, n, S, Y, C, X, f, O, Y, B, L, d, L, M, C, R, F, N, d, Y, e, E, n, R, D, Z, N, S, c, C, a, f, A, Y, g, c, g, Q, l, Y, h, c, b, j, i, S, X, d, V, n, I, D, S, O, j, n, g, g, U, j, I, Z, B, A, L, I, S, S, i, d, e, I, W, O, k, W, g, E, g, L, B, K, K, M, b, M, D, D, J, Z, Y, b, K, R, b, U, A, c, n, d, a, N, Y, U, l, n, H, X, H, a, l, M, h, E, X, F, V, X, B, c, f, l, g, a, m, D, T, J, Q, A, G, Y, A, M, a
-
-trying to find L=221
-found in 26 generations
-S=40, L=221: X, b, D, c, E, n, D, b, m, H, Q, m, F, f, i, O, Q, V, N, B, Z, Q, g, m, K, A, g, h, i, c, Q, n, d, n, g, N, j, C, e, O, D, F, I, E, a, D, H, f, h, f, l, i, E, l, d, Y, A, X, V, k, b, M, e, G, A, P, W, D, i, b, G, Z, C, R, T, j, E, e, T, W, f, R, d, J, n, k, V, d, W, P, T, l, h, a, T, N, a, Y, I, m, a, a, I, A, Z, Y, j, O, W, b, e, F, Z, k, d, f, D, M, c, g, S, Z, S, B, B, a, g, T, C, j, X, Y, m, e, K, S, f, O, R, f, f, S, A, U, c, J, T, U, I, a, i, K, J, Z, h, D, U, f, X, f, Q, b, k, A, a, N, M, R, e, R, O, O, A, V, a, E, b, T, H, U, P, l, K, K, D, Y, b, c, h, O, C, J, c, j, g, R, L, c, Z, a, K, g, e, A, H, V, B, k, H, J, i, S, l, G, k, C, F, Q, O, N, f
-
-trying to find L=243
-found in 40 generations
-S=40, L=243: B, A, H, l, g, N, U, R, c, C, A, l, P, N, n, b, n, i, L, D, Y, J, U, k, i, F, l, Z, O, J, Z, G, F, i, N, D, I, F, D, A, Z, D, U, d, C, j, K, R, U, O, E, j, S, R, O, A, A, T, n, D, N, I, g, g, h, e, Q, B, D, k, V, H, I, d, Q, b, k, T, c, f, Y, U, f, K, H, Y, V, O, Q, T, d, i, U, Y, D, j, F, Y, R, M, l, l, F, E, R, a, A, I, M, L, K, e, J, j, Q, Z, C, m, N, K, O, F, G, b, h, O, C, F, I, V, B, g, Q, N, l, C, n, W, d, g, l, Q, h, L, M, I, S, L, C, E, O, V, N, A, V, J, Y, I, f, W, f, Q, D, V, e, K, K, m, O, e, L, V, G, S, Z, S, j, e, H, R, W, g, b, K, S, b, F, T, J, J, a, k, g, Z, V, b, c, l, h, W, Z, Z, j, Z, g, I, b, i, i, R, d, h, B, G, e, B, m, V, g, n, Y, Y, T, H, C, H, V, f, G, A, b, d, N, P, e, d, Z, a, S, E, b, D, J
-
-trying to find L=267
-found in 43 generations
-S=40, L=267: K, X, J, n, O, K, R, K, K, f, P, D, Y, M, n, l, L, E, W, K, b, n, e, J, S, d, A, g, H, l, V, i, n, Q, A, H, E, A, l, O, R, c, V, W, e, S, Q, l, A, N, M, j, j, K, l, X, C, K, e, I, P, F, j, W, Q, C, J, W, U, W, i, d, i, a, F, g, n, Y, l, Z, B, G, V, P, U, l, T, Y, V, R, b, L, H, W, g, F, T, m, N, X, X, E, C, P, l, P, L, S, Z, T, H, T, I, O, D, G, H, H, B, N, h, j, J, k, N, F, R, g, K, I, m, i, N, a, W, h, Q, c, M, F, b, g, C, V, H, m, c, m, E, X, P, B, h, i, R, I, K, F, d, P, Y, Y, U, T, X, b, c, b, m, g, J, T, B, D, m, m, J, O, U, U, d, D, C, O, h, J, J, R, n, d, g, S, a, C, I, B, b, N, K, M, E, K, n, A, T, U, N, W, F, X, n, k, T, P, R, S, E, N, b, e, B, J, K, k, Q, I, a, k, V, Q, Y, a, P, J, M, V, e, c, K, N, f, Q, j, O, c, k, S, l, U, J, m, U, h, X, R, Q, n, L, e, T, Q, W, j, E, k, c, c
-
-trying to find L=293
-found in 66 generations
-S=40, L=293: B, E, n, H, A, g, e, Z, S, M, Y, P, W, G, c, i, l, A, V, H, h, B, l, e, Y, n, Z, P, b, V, e, m, L, C, g, J, n, E, N, J, Z, b, P, m, A, a, d, F, R, N, G, g, U, G, j, k, D, e, M, L, c, k, W, R, l, j, F, S, K, i, N, X, J, S, D, i, A, Q, A, F, L, l, k, d, K, b, A, b, G, Q, C, O, X, S, F, K, M, b, D, S, X, P, G, D, D, W, Q, I, Y, Y, d, R, n, T, L, I, m, E, b, O, Q, j, P, d, b, d, g, O, S, S, O, Z, d, Y, W, M, M, d, e, e, G, T, E, c, Q, V, R, I, J, Q, c, O, F, Y, e, K, C, i, W, D, f, b, i, G, G, L, J, i, F, n, P, N, i, C, E, O, l, Y, F, Q, e, n, c, J, K, P, f, E, B, I, N, A, A, c, H, M, Z, j, Z, a, m, a, X, a, f, k, a, K, j, K, F, I, I, n, X, f, H, K, d, N, l, Q, T, j, h, N, K, J, L, A, f, d, M, S, Y, K, H, L, U, J, X, N, U, U, A, K, G, a, Z, R, k, Y, T, A, I, j, j, O, c, N, H, i, Y, h, D, b, g, R, S, V, P, n, C, M, F, e, D, m, K, g, j, V, M, I, P, j, I, T, N, F, j, X, I
-
-trying to find L=322
-found in 49 generations
-S=40, L=322: V, Z, b, b, E, N, F, N, i, e, U, O, D, W, M, g, c, V, E, J, N, B, H, T, V, R, h, E, k, X, h, C, Y, N, X, e, D, f, O, X, a, Y, J, H, D, O, A, U, P, J, A, g, P, U, i, h, M, c, R, b, Q, L, f, n, O, L, N, j, W, F, W, N, b, J, e, Y, D, U, n, M, E, W, b, k, A, K, g, H, C, L, e, Q, i, F, U, d, D, e, E, g, j, c, H, J, g, i, M, h, P, R, Q, b, H, I, M, O, V, B, F, e, h, Y, Y, a, M, J, F, D, D, T, d, F, J, R, T, Y, H, k, g, a, D, J, m, d, I, c, j, P, j, d, A, M, Q, H, d, m, F, n, j, I, a, E, L, H, n, d, G, c, U, g, e, e, c, Z, i, Y, I, E, G, T, E, I, D, l, V, n, g, C, V, a, l, O, F, b, A, L, D, P, D, g, Z, c, N, P, K, n, b, m, H, S, j, l, G, l, h, J, K, m, Q, V, m, P, S, N, h, X, S, C, E, E, P, O, Q, g, Y, O, n, m, V, b, P, H, L, R, j, J, j, b, U, Z, C, F, l, g, O, U, k, B, i, V, M, m, m, C, A, A, h, D, Y, k, m, g, m, n, n, i, n, S, R, k, E, A, P, A, W, X, D, j, f, L, J, V, I, Y, L, C, b, l, m, O, H, c, F, a, N, k, O, Y, Q, Z, O, W, D, b, c, c, A, b, V, X, d, M
-
-trying to find L=354
-found in 78 generations
-S=40, L=354: C, c, H, V, P, I, f, K, Z, Y, T, V, E, Y, h, g, i, E, A, S, L, n, a, L, Q, S, h, i, j, D, F, T, F, d, E, Q, i, D, l, R, F, R, N, a, N, Y, C, b, C, A, H, M, c, k, n, F, N, O, a, Y, j, J, j, g, D, R, f, f, d, g, G, h, T, R, P, S, H, d, k, c, i, Y, P, d, G, a, B, l, Q, J, M, P, Y, m, T, b, a, H, S, X, l, Y, f, i, e, n, c, P, J, n, Y, I, B, F, l, e, H, F, Y, A, D, H, Y, g, Z, c, n, D, P, W, E, j, L, L, O, E, H, O, C, n, b, c, a, W, T, W, X, e, K, R, X, F, k, B, I, m, Y, Z, Q, Q, Y, H, U, V, V, Q, E, m, i, W, Q, C, i, V, Z, G, n, d, l, N, k, N, n, l, U, A, X, E, k, R, S, n, V, k, C, g, Y, V, e, V, O, h, R, R, C, V, l, F, L, E, D, O, X, M, n, e, O, d, K, H, J, W, a, G, Z, k, H, l, G, R, Q, W, D, K, S, T, P, h, C, F, b, M, k, d, F, V, K, Y, k, D, d, X, m, Z, F, K, f, j, P, R, E, N, C, k, b, l, C, X, T, A, g, W, Y, S, l, D, M, X, D, e, m, L, U, C, j, Z, i, h, k, I, T, H, C, f, M, f, A, c, e, U, e, l, n, X, A, m, X, K, E, E, X, R, K, k, f, V, f, Z, N, H, k, Z, e, T, J, P, D, U, W, W, U, U, T, g, U, c, J, R, m, M, G, k, O, K, J, U, F, c, m, b, B, i, S, N
-
-trying to find L=389
-found in 85 generations
-S=40, L=389: c, c, a, b, f, C, L, B, C, F, E, P, e, C, H, X, N, Z, f, P, E, m, V, l, M, j, W, g, W, d, X, O, f, l, N, f, n, P, Q, Y, Q, H, W, j, l, Y, V, L, m, Y, g, k, i, A, m, D, m, C, Q, Z, i, S, S, W, e, V, e, l, O, D, E, Z, M, a, a, R, g, h, C, a, l, b, W, h, D, I, f, B, d, F, R, U, O, H, H, j, F, N, e, W, k, Q, h, H, O, G, U, U, S, n, Y, G, h, S, O, j, U, n, m, N, c, Q, P, f, R, f, U, D, K, I, D, J, j, V, h, c, g, B, P, C, n, X, K, D, g, P, h, T, d, R, W, m, S, c, S, K, U, F, n, D, S, L, d, I, B, V, S, d, l, P, D, n, J, B, E, d, i, a, e, S, Y, K, c, A, B, G, K, b, g, f, i, V, E, W, E, A, W, l, W, I, e, I, X, e, M, W, a, I, a, G, f, N, I, T, M, g, l, m, H, a, g, A, Y, d, k, L, O, I, Q, O, W, Y, U, Z, m, h, K, a, E, M, m, K, G, n, G, W, f, M, i, M, V, Q, B, X, i, B, n, d, f, F, Z, b, N, a, k, H, B, g, a, Q, J, V, b, b, e, i, J, A, F, M, H, R, h, b, d, N, V, g, m, A, G, P, b, h, O, C, S, T, Y, N, j, g, d, n, L, l, f, H, Z, K, B, D, k, R, L, G, D, O, J, S, i, Y, E, H, i, L, n, j, A, k, n, K, Q, g, U, J, F, c, J, l, j, T, D, L, T, O, F, Q, c, Z, A, f, S, G, Z, J, R, I, E, l, H, m, R, c, E, C, Z, a, d, O, L, R, O, Q, K, K, N, l, n, I, L, g, F, W, R, K, Y, c, V
-
-trying to find L=427
-found in 129 generations
-S=40, L=427: A, W, b, h, k, O, G, i, W, B, n, g, Q, k, L, k, e, N, W, A, F, K, B, F, c, a, L, G, A, K, F, I, l, S, j, U, E, X, V, I, a, I, I, V, L, e, D, U, K, A, l, T, T, F, V, k, k, Z, g, l, M, X, a, j, R, M, K, M, C, l, b, B, B, O, g, g, H, d, I, f, U, j, X, J, Q, L, K, Z, W, F, U, c, e, G, W, k, a, T, D, C, e, T, h, P, Y, h, J, J, g, A, i, P, W, E, e, K, f, c, g, k, E, N, S, h, n, c, b, e, O, B, H, A, G, l, m, R, S, l, h, V, F, O, M, S, T, W, d, H, M, N, E, Y, a, f, Y, T, M, P, K, N, O, Q, d, Z, d, g, M, d, R, P, c, n, a, C, M, J, Z, L, i, A, P, g, B, V, j, i, O, d, f, b, I, m, P, n, T, L, n, D, g, N, X, Z, I, S, n, P, e, n, Y, B, U, J, G, k, T, l, I, c, J, A, m, O, i, b, N, b, E, U, I, J, I, F, l, Y, m, D, F, m, X, Q, F, Y, W, H, k, Q, j, Q, l, Z, f, P, a, n, N, n, U, S, O, F, H, O, Y, G, d, O, I, O, E, b, L, N, C, a, X, S, Q, P, I, d, c, D, f, L, j, T, O, h, C, c, i, T, b, H, i, R, e, A, C, n, V, n, A, d, T, I, e, M, T, A, T, J, c, W, X, R, T, d, C, J, K, E, i, Q, X, E, f, A, h, g, W, n, b, M, f, f, I, D, Z, F, d, B, C, d, d, a, Y, M, H, T, j, L, P, O, U, C, S, R, j, M, R, c, K, e, H, m, W, D, k, S, S, G, n, R, Y, L, h, H, a, N, D, L, X, d, P, f, h, b, l, E, K, k, c, j, A, O, D, V, M, L, V, A, M, k, G, Y, E, S, B, Y, e, U, L, f, l, G, e, J, O, W, l, C, F, F, g, n, k
-
-trying to find L=469
-found in 124 generations
-S=40, L=469: c, O, B, e, m, V, B, k, T, m, a, V, b, L, Y, B, M, b, g, T, Y, D, e, i, S, C, d, U, D, S, V, Y, A, O, e, b, X, n, E, W, Q, Y, W, b, e, W, K, L, L, S, M, G, a, F, f, V, S, k, Y, c, A, L, l, T, d, L, d, f, F, b, R, L, G, e, M, P, b, S, D, n, W, M, M, L, R, a, T, g, M, Z, f, C, n, l, H, Q, Z, d, R, E, Z, b, P, c, M, U, P, l, f, N, D, Q, S, i, i, O, D, E, b, m, n, M, g, Q, H, P, j, O, U, L, M, N, l, K, i, B, K, E, e, D, V, G, U, T, A, K, T, e, N, j, n, b, K, O, H, k, C, H, L, i, j, d, W, V, H, e, V, i, P, P, d, c, b, N, W, e, O, d, E, j, B, L, A, h, h, E, M, e, X, Q, f, n, e, g, E, A, k, D, i, Y, e, R, Z, W, O, L, W, C, h, P, Q, g, l, M, d, l, E, k, g, H, H, Z, U, B, F, m, f, Y, U, X, L, k, H, n, i, X, f, E, D, c, H, f, g, N, h, g, k, O, l, a, I, P, f, k, l, G, H, N, B, a, M, O, Z, a, Y, h, X, N, K, X, K, a, d, O, i, e, U, g, G, M, l, F, E, Y, P, M, F, S, G, l, V, g, R, e, j, R, i, a, R, T, F, J, d, Q, J, J, E, l, C, I, I, i, g, n, C, c, e, T, N, N, S, a, a, i, T, l, c, R, K, D, C, J, f, M, C, V, e, H, K, c, V, N, M, K, A, C, m, e, d, k, f, T, C, S, U, W, F, Z, B, J, g, B, i, f, B, h, Y, Y, R, M, D, O, k, b, T, f, c, h, T, c, E, L, P, R, R, C, P, A, R, d, C, O, R, Y, b, i, K, f, i, l, e, P, Z, F, X, G, Z, V, W, k, X, R, g, Z, i, F, G, D, m, R, W, d, Z, N, Q, k, I, L, B, b, J, h, k, n, T, B, n, N, J, a, S, A, N, T, h, S, P, J, T, I, X, W, f, X, T, J, P, V, E, d, A, l, Z, E, h, l, J, j, k
-
-trying to find L=515
-found in 181 generations
-S=40, L=515: j, c, T, D, Y, U, X, S, V, i, Y, G, V, H, W, J, k, T, n, h, a, D, h, k, d, h, U, P, W, H, k, Y, k, X, f, h, I, a, f, J, A, c, L, C, a, H, A, O, j, L, h, l, f, A, i, h, K, D, K, Z, M, f, U, D, Q, b, E, n, F, Z, m, H, G, O, m, f, X, I, R, E, a, K, X, F, T, M, i, I, H, P, f, D, e, Q, j, H, C, c, P, A, a, n, K, d, S, Q, I, J, Y, V, e, X, Q, X, i, T, H, O, H, F, J, D, N, a, k, P, h, S, g, S, d, C, m, e, Z, N, V, d, a, R, Y, l, H, Y, n, E, e, R, G, T, T, S, D, O, B, n, T, Q, i, f, j, D, G, P, k, N, m, Q, G, S, M, L, S, U, N, B, R, M, b, B, T, B, l, h, c, m, j, R, Q, D, f, Q, U, G, X, e, b, W, O, k, a, V, R, X, E, g, A, n, R, L, P, C, Y, D, L, U, H, U, O, M, j, m, O, R, i, i, E, J, g, g, F, L, M, I, b, P, T, V, I, A, W, a, O, l, Q, e, m, K, Q, H, X, m, R, n, i, c, K, g, J, T, N, b, V, n, W, f, Z, g, H, n, L, n, N, C, n, Q, F, S, N, T, h, e, U, i, W, U, j, M, l, P, c, W, D, P, X, K, A, f, O, C, W, j, A, P, N, n, B, M, B, J, G, W, P, Q, f, P, g, h, Z, a, b, c, U, K, T, C, A, d, b, m, Y, g, K, l, J, d, P, Z, B, h, m, c, R, d, d, B, A, I, f, i, U, f, G, U, a, X, j, B, G, I, i, M, H, D, c, V, O, Y, j, g, R, R, H, l, V, U, g, M, M, d, J, b, M, K, f, m, E, W, G, n, Y, Z, n, C, Z, X, B, C, S, C, G, Q, K, K, j, N, E, M, A, j, h, X, L, l, O, W, d, M, n, b, A, T, E, H, L, V, a, B, e, D, d, W, M, D, l, X, c, Z, G, A, e, c, f, b, b, J, f, g, e, f, B, d, e, F, K, E, j, d, K, h, A, J, m, W, B, I, V, C, R, K, C, V, Q, C, d, l, G, E, c, J, H, h, F, D, W, X, d, k, S, a, i, n, G, i, P, M, G, D, Z, F, Y, R, S, R, h, Q, Y, m, F, R, W, S, L, g, m
-
-trying to find L=566
-found in 219 generations
-S=40, L=566: B, H, e, W, G, n, M, D, E, d, W, h, V, X, D, c, O, H, R, a, V, S, V, D, e, f, b, c, Q, k, C, k, U, Y, Y, g, h, j, O, W, K, T, g, V, k, h, f, J, G, M, b, T, i, f, i, L, a, G, c, F, i, N, j, n, n, N, W, W, i, j, a, B, S, c, E, L, j, c, a, D, F, S, H, J, Z, b, Z, D, T, j, K, P, T, R, V, O, k, M, d, Z, m, M, E, c, X, T, Y, N, n, e, J, n, S, C, F, P, D, Z, H, M, B, C, I, j, l, T, f, a, Z, V, A, O, S, Z, j, I, H, U, j, Z, Q, D, A, E, H, b, Q, P, a, k, F, K, R, P, M, M, U, W, X, j, A, k, l, G, N, K, D, H, a, R, N, i, K, X, Q, O, J, H, E, D, g, Y, F, C, Q, R, l, U, n, g, O, V, f, B, c, Z, I, V, W, T, J, m, a, N, S, N, h, P, m, P, e, I, l, d, l, K, Z, Y, f, j, X, l, a, i, R, Z, c, C, W, E, R, D, O, i, a, c, c, G, e, K, n, V, N, g, L, O, a, A, d, U, g, U, E, h, n, Z, X, L, n, T, O, l, N, P, F, R, m, d, N, I, P, B, R, e, S, T, K, O, F, Z, Z, P, b, U, A, V, V, Z, W, f, l, h, B, B, J, K, M, a, m, H, f, K, A, C, P, l, M, S, U, X, b, C, E, W, k, m, W, U, V, j, C, m, n, i, g, R, n, G, b, V, c, W, J, A, l, j, L, F, Q, f, U, K, b, O, U, O, Z, i, Q, W, Y, b, I, X, W, D, S, m, b, R, c, b, A, e, l, Q, E, P, R, E, k, e, O, Y, U, B, Q, n, h, L, K, j, e, M, Z, G, Z, T, B, A, c, e, c, P, Q, h, l, S, F, e, Q, B, g, n, a, f, O, b, B, N, E, i, Y, C, J, a, T, k, g, m, Z, a, d, a, h, W, C, i, W, I, G, X, h, e, i, C, Z, f, n, d, k, I, h, F, W, a, g, A, m, A, N, L, N, D, a, Y, R, H, P, H, Y, P, O, e, b, b, i, m, G, D, d, C, f, d, J, E, g, M, H, N, U, F, c, L, i, e, B, P, J, Q, g, c, B, K, h, g, S, B, D, P, f, D, G, B, e, R, R, I, D, b, n, Y, k, W, N, a, J, L, g, X, e, G, k, H, I, k, A, R, K, H, l, W, b, G, S, S, k, O, T, E, j, B, b, k, i, n, R, J, M, l, F, I, Q, I, I, Z, L, J, C, X, Z, U, k, n, k, Z
-
-trying to find L=622
-found in 279 generations
-S=40, L=622: b, a, l, K, n, Z, e, V, j, U, l, R, g, F, n, P, C, Z, Q, V, X, d, Q, I, a, O, n, J, c, g, d, c, P, X, R, l, Y, K, K, P, c, D, j, b, Z, V, C, Y, W, m, b, Q, R, P, f, R, a, E, B, T, F, C, A, f, m, T, W, b, m, G, d, i, g, M, U, O, i, T, P, n, E, N, h, b, n, m, J, l, i, j, g, b, k, n, B, k, H, b, O, E, W, f, n, K, J, Z, O, S, T, Z, W, B, P, Y, c, b, K, U, R, U, f, A, B, U, n, b, Y, h, h, H, B, c, Y, M, T, D, Z, B, j, V, W, N, M, H, A, d, S, h, I, Z, N, k, V, P, H, M, W, e, Y, Q, J, U, J, N, d, I, F, G, f, h, m, H, X, P, R, E, L, H, O, j, k, D, S, Q, O, Z, G, J, g, J, X, h, F, N, X, H, E, U, F, b, B, O, C, c, N, L, Q, e, K, c, T, k, l, S, U, k, A, F, D, a, k, I, C, U, e, W, Y, I, P, I, N, c, E, E, O, P, m, W, V, J, I, O, a, h, Q, Q, B, S, X, I, V, Y, d, X, J, B, V, b, T, h, D, i, R, M, d, h, J, P, J, d, P, i, V, i, h, L, c, L, A, M, N, E, j, d, k, P, O, A, R, C, B, a, D, V, I, l, e, m, K, A, Z, j, Y, F, E, P, V, Z, J, K, S, P, h, n, H, a, j, L, S, Y, l, I, T, n, M, G, i, U, A, V, H, Z, a, Y, U, E, l, G, V, U, X, n, A, W, Z, f, O, X, c, Q, X, f, Q, c, C, H, S, g, f, V, V, k, K, W, k, C, S, O, g, W, H, f, j, C, N, B, X, B, Q, N, H, F, R, h, C, j, G, c, h, S, H, i, l, N, R, d, M, E, V, G, X, Q, E, c, l, V, Q, P, D, A, S, L, K, b, M, P, P, G, e, k, Z, E, Q, F, J, V, R, S, a, b, S, b, A, e, C, m, N, Z, c, j, J, C, a, Q, m, X, T, H, P, B, I, i, M, V, m, a, K, T, T, L, e, H, H, Y, Z, F, A, n, C, T, N, m, Q, W, n, F, c, O, D, I, U, S, l, f, b, f, C, Q, l, M, h, c, n, Y, N, S, c, k, j, h, d, N, D, L, P, Q, Z, M, j, K, Y, f, S, I, S, W, W, E, H, n, Q, H, T, B, F, T, c, B, W, I, E, C, W, G, G, l, J, J, a, L, f, I, f, P, A, b, g, C, J, b, G, j, P, d, L, X, D, M, Y, J, F, S, K, G, H, d, F, Y, a, G, T, g, D, C, k, U, L, G, R, k, m, E, S, N, A, E, T, O, L, I, n, X, V, O, F, W, F, K, e, N, W, C, D, T, d, O, J, i, c, G, I, A, c, R, n, i, i, X, e, F, V, A
-
-trying to find L=684
-found in 381 generations
-S=40, L=684: T, h, S, j, Y, Y, L, M, K, d, W, l, A, l, M, h, e, j, h, M, d, a, T, f, Z, P, c, H, P, H, i, b, K, D, X, m, B, R, f, Q, G, B, B, Q, I, f, K, m, J, Q, K, M, S, d, T, R, N, c, m, V, G, k, T, k, M, H, V, J, B, E, X, G, S, c, X, K, C, Q, M, B, X, g, V, Q, e, F, i, P, D, E, O, n, C, b, U, h, P, j, M, A, K, X, I, A, c, R, Y, U, d, H, C, I, X, D, V, T, M, V, K, l, c, K, f, G, j, R, W, f, i, N, m, Y, j, f, V, P, i, L, k, S, X, Z, E, V, n, h, F, P, N, K, e, K, n, U, V, C, f, e, N, n, H, Q, Q, n, X, W, W, X, Q, H, G, A, E, W, Y, A, S, W, O, m, T, G, M, U, f, f, l, n, E, P, f, I, a, j, U, J, e, A, b, L, C, h, E, B, F, O, a, U, A, Z, F, Y, m, P, Z, e, P, m, Z, c, a, a, I, Q, E, R, i, J, b, Z, h, V, f, g, P, l, B, Z, J, W, i, g, f, c, b, V, U, F, k, F, N, M, T, I, M, D, D, N, X, e, I, b, f, H, d, c, l, J, U, X, a, S, i, S, Y, n, i, n, I, U, Z, X, L, e, l, m, a, N, R, G, c, T, a, W, R, m, K, E, d, i, a, R, R, j, c, V, Z, j, V, E, G, l, g, U, L, Q, h, I, C, W, m, W, S, S, h, T, d, n, F, V, j, d, U, i, B, S, L, Z, O, H, E, Q, a, J, L, O, P, C, H, I, j, k, L, Y, C, S, P, k, Z, a, G, m, m, j, b, C, D, M, i, A, L, G, G, d, C, M, Z, K, F, B, M, E, E, N, i, D, S, K, L, g, m, e, U, I, g, h, g, H, h, X, J, S, O, k, g, j, g, R, V, e, E, a, D, A, T, n, Z, S, Z, B, J, M, G, R, U, S, C, Z, g, F, j, i, X, S, G, E, Z, T, W, D, d, J, G, n, f, N, f, C, J, H, M, X, n, G, J, K, Q, S, H, H, U, P, V, i, G, U, K, J, d, Q, k, Y, K, c, h, R, a, c, Z, R, S, N, E, C, N, D, a, V, F, m, N, j, N, Z, H, b, T, J, C, O, X, h, l, G, I, W, k, W, c, Q, b, J, a, n, O, f, U, M, Y, k, A, e, b, d, V, l, S, a, k, G, T, Y, i, W, V, V, S, l, X, l, W, K, U, n, a, A, F, X, C, l, O, D, m, D, U, Y, E, J, F, H, g, B, m, L, K, O, L, I, G, W, H, O, c, I, T, j, l, j, L, f, b, N, N, a, m, H, j, G, L, D, c, g, d, X, c, J, D, K, I, Z, m, n, J, P, g, b, O, A, C, m, l, i, U, c, e, V, g, I, k, H, R, k, d, K, N, T, H, n, l, L, P, R, c, i, i, f, M, W, M, c, n, D, k, i, l, V, h, m, c, A, Y, P, U, C, e, M, k, c, L, m, k, k, X, Y, V, O, R, F, S, T, N, g, l, Y, a, O, C, X, F, a, f, P, h, K
-
 trying to find L=752
 found in 406 generations
 S=40, L=752: H, N, F, D, R, a, k, n, W, T, n, V, S, K, S, I, X, D, O, n, L, L, X, V, n, N, K, I, f, Y, m, N, C, n, b, H, R, A, D, Q, N, k, D, D, S, f, X, S, U, j, P, Z, C, O, Q, Z, h, E, c, U, W, n, G, T, F, N, V, U, c, X, N, D, Z, W, f, N, h, V, X, d, B, E, A, K, G, k, c, W, J, j, Z, F, P, a, m, h, f, P, g, h, G, E, I, n, n, S, N, f, I, U, S, m, c, h, M, e, A, Q, a, g, m, l, f, E, F, L, C, i, e, K, R, I, b, j, U, U, V, h, c, H, A, J, M, L, P, P, B, d, k, i, Y, X, G, d, d, m, L, H, Y, V, K, d, H, O, a, W, V, E, g, L, R, M, E, i, l, k, E, T, O, S, M, W, R, F, V, G, G, i, W, Q, h, m, g, J, b, D, c, k, Q, n, K, e, k, m, M, R, j, k, V, d, Y, M, l, U, P, T, h, A, Y, G, N, g, g, k, B, j, A, C, k, U, Q, c, N, P, W, g, V, a, E, h, d, U, O, c, j, f, k, e, X, j, G, D, B, a, a, M, S, l, J, U, m, I, m, F, R, Q, M, j, Q, S, B, m, X, l, C, T, H, h, F, E, Z, e, d, P, L, I, L, d, R, c, O, X, U, g, F, g, X, B, X, k, j, E, d, T, D, H, b, O, l, X, E, j, S, W, P, K, Z, j, j, L, J, L, S, X, A, d, Q, X, f, Q, R, d, V, b, N, b, U, a, H, B, C, S, A, k, O, T, R, f, D, C, L, n, F, a, J, k, P, F, k, k, S, L, T, a, D, M, b, W, d, l, i, O, f, T, P, R, O, J, R, b, g, O, K, i, b, n, B, R, C, B, Y, g, B, c, L, E, Y, i, m, C, R, L, e, O, C, c, e, a, I, C, j, n, j, J, f, a, L, V, f, e, Z, m, A, S, g, U, I, Y, c, M, a, C, N, i, K, g, G, K, f, W, C, C, a, Z, R, E, Q, H, Z, B, N, S, H, m, U, G, L, g, Q, A, l, d, J, Y, Z, V, H, n, h, a, Q, G, f, g, W, G, F, C, G, X, X, n, m, W, L, A, U, H, l, F, B, l, P, c, c, Z, c, Q, b, d, c, V, W, E, S, O, k, G, H, V, J, H, e, V, B, P, Y, T, B, b, m, e, e, j, B, D, G, J, J, D, U, Y, N, G, Q, W, l, H, C, Z, n, I, D, k, g, D, F, S, S, T, Z, S, j, I, T, T, S, E, U, J, m, Y, U, C, m, f, K, U, R, h, e, b, h, O, g, E, R, B, O, G, j, D, N, J, n, c, a, c, m, V, A, V, O, i, Z, N, B, Z, I, I, Z, A, g, K, B, T, k, l, B, h, Q, B, U, e, E, P, E, G, C, E, C, Y, k, Y, a, F, H, L, Q, T, m, j, h, b, f, c, l, e, C, g, b, l, D, W, X, e, Q, L, D, b, Z, G, h, i, C, H, T, d, X, O, h, W, b, i, U, Z, P, h, I, B, L, Y, Y, O, P, G, O, M, A, L, N, M, I, F, T, M, T, G, V, N, d, O, m, H, c, S, Z, J, W, c, P, M, M, g, e, J, d, L, l, b, T, K, A, B, e, L, f, U, N, Q, d, C, d, e, M, P, Q, l, L, G, g, S, P, k, I, Q, F, c, K, H, d, i, R, i, L, W, U, X, c, D, l, R
@@ -171,11 +47,6 @@ S=40, L=1098: n, Q, Y, D, A, K, F, Z, C, L, h, R, j, B, B, M, g, C, I, L, E, G, 
 
 trying to find L=1207
 """
-
-S = 20
-L = S
-POP = 200
-LOCAL = True
 
 '''
 POP = 50
@@ -203,6 +74,12 @@ S=20, L=377: H, G, G, S, G, I, I, O, H, A, B, N, K, I, B, R, L, M, R, G, L, P, J
 
 '''
 
+
+S = 5
+L = S
+POP = 200
+LOCAL = True
+
 simulation = {
     'problem': surprising_sequences,
     'problem_parameters': {
@@ -228,7 +105,6 @@ simulation = {
     },
 }
 
-S = 3
 STOP_GENERATION = 1000
 while True:
     L = max(int(1.1 * L), L + 1)
@@ -243,6 +119,6 @@ while True:
             genome_size=L
         ))
         best += '\n'
-    else:
         print(best)
+    else:
         break

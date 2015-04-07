@@ -1,21 +1,23 @@
 from adult_selection import full_generational_replacement
 from evo_alg import run_simulation
-from mate_selection import ranked
+from mate_selection import ranked, tournament
 from problems import surprising_sequences
 from reproduction import splice, mutate_string_genome
+
 
 s = {
     'problem': surprising_sequences,
     'problem_parameters': {
-        'char_set_size': 20,
         'population_size': 200,
-        'genome_size': 45,
-        'local': True
     },
 
     'adult_selection_method': full_generational_replacement,
 
-    'mate_selection_method': ranked,
+    'mate_selection_method': tournament,
+    'mate_selection_args': {
+        'group_size': 10,
+        'epsilon': 0.1,
+    },
 
     'crossover_method': splice,
     'crossover_rate': 0.75,
@@ -31,29 +33,34 @@ s = {
     'plot_sigmas': False
 }
 
-for S in (3, 5, 10, 15, 20):
-    print("S={}".format(S))
-    L = S
-    stops = 0
-    while True:
-        s['problem_parameters'].update({
-            'char_set_size': S,
-            'genome_size': L
-        })
-        r = run_simulation(s, log=False)
-        if r['generation_number'] < 1000:
-            print(r['generation_number'], '\t', surprising_sequences.phenotype_representation(
-                r['final_best_individual']['phenotype'],
-                char_set_size=S,
-                genome_size=L)
-            )
-            L = max(int(L * 1.1), L + 1)
-            stops = 0
-        else:
-            stops += 1
-            print('1000 stop')
-            if stops == 3:
-                break
+S = 37
+LOCAL = False
+print('LOCAL={}'.format(LOCAL))
+print("S={}".format(S))
+
+L = 84
+stops = 0
+while True:
+    s['problem_parameters'].update({
+        'char_set_size': S,
+        'genome_size': L,
+        'local': LOCAL
+    })
+    r = run_simulation(s, log=False)
+    if r['generation_number'] < 1000:
+        print(r['generation_number'], '\t', surprising_sequences.phenotype_representation(
+            r['final_best_individual']['phenotype'],
+            char_set_size=S,
+            genome_size=L)
+        )
+        L = max(int(L * 1.1), L + 1)
+        # L += 1
+        stops = 0
+    else:
+        stops += 1
+        print('1000 stop')
+        if stops == 3:
+            break
 
 '''
 POP = 200
