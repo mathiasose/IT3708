@@ -1,53 +1,34 @@
 from __future__ import division
-from math import exp
-from random import getrandbits
-import numpy as np
+
+AGENT_DIRECTIONS = NORTH, WEST, SOUTH, EAST = 'N', 'W', 'S', 'E'
+NOOP = 'NOOP'
+
+DELTAS = {
+    NORTH: (0, -1),
+    WEST: (-1, 0),
+    SOUTH: (0, 1),
+    EAST: (1, 0),
+    NOOP: (0, 0)
+}
+
+is_start = lambda x: x == -2
+is_food = lambda x: x > 0
+is_poison = lambda x: x == -1
+
+EMPTY = 0
+is_empty = lambda x: x == EMPTY or is_start(x)
+
+ACTIONS = AGENT_DIRECTIONS
 
 
 def tuple_add(*tuples):
     return tuple(map(sum, zip(*tuples)))
 
 
-def sigmoid(x):
-    # return tanh(x)
-    return 1 / (1 + exp(-x))
-
-
-def step(x, threshold=0.5):
-    if x > threshold:
-        return 1
-    else:
-        return 0
-
-
-def random_bitstring(n):
-    return ''.join(str(getrandbits(1)) for _ in xrange(n))
-
-
-def normalize_bitstring(bitstring):
-    return int(bitstring, base=2) / (2 ** len(bitstring) - 1)
-
-
-def matrix_fit(array_data, matrix_dimensions):
-    """
-    fills the matrices with data from the 1D array
-    """
-    matrices = [np.zeros(md) for md in matrix_dimensions]
-    for matrix in matrices:
-        for i, row in enumerate(matrix):
-            for j, col in enumerate(row):
-                matrix[i][j] = array_data.pop()
-
-    return matrices
-
-
 class TorusWorld:
-    def __init__(self, dimensions):
-        self.w, self.h = dimensions
-        self.grid = [[self.generate_tile() for _ in xrange(self.w)] for _ in xrange(self.h)]
-
-    def generate_tile(self):
-        raise NotImplementedError()
+    def __init__(self, grid):
+        self.w, self.h = len(grid[0]), len(grid)
+        self.grid = grid
 
     def get_tile(self, x, y):
         return self.grid[y][x]
@@ -60,6 +41,9 @@ class TorusWorld:
 
     def get_count_of_value(self, value):
         return sum(sum(cell == value for cell in row) for row in self.grid)
+
+    def get_count_of_predicate(self, predicate):
+        return sum(sum(predicate(cell) for cell in row) for row in self.grid)
 
     def get_coordinates_of_value(self, value):
         return list((x, y) for x in xrange(self.w) for y in xrange(self.w) if self.get_tile(x, y) == value)

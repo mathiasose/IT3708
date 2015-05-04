@@ -1,53 +1,50 @@
 from __future__ import print_function, division
+from copy import deepcopy
 
-from flatland import FlatlandProblem
-from ea.ea import EARunner
-from ea.problems.utils import *
+from flatland import FlatlandAgent
+from flatlands import get_flatlands
+from gui import FlatlandGUI
 
-if __name__ == "__main__":
-    layers = [6, 3]
-    bias = {0: [1.0]}
-    problem = FlatlandProblem(
-        1,
-        layers,
-        bias,
-        f=0.33,
-        p=0.33,
-        t=60,
-        activation_threshold=0.0,
-        minimum_activation=0.0,
-        static=False,
-        num_scenarios=1
-    )
 
-    # Configure the runner
-    population_size = 200
-    generations = 100
-    adult_selection = generational_mixing
-    adult_to_child_ratio = 0.5
-    parent_selection = tournament_selection
-    k = 8
-    epsilon = 0.15
-    crossover_rate = 0.5
-    crossover_function = one_point_crossover
-    mutation_rate = 0.01
-    mutation_function = per_genome_component
-    threshold = None
+ITERATIONS = 100
+P = 0.25
 
-    runner1 = EARunner(
-        problem=problem,
-        population_size=population_size,
-        generations=generations,
-        crossover_rate=crossover_rate,
-        mutation_rate=mutation_rate,
-        adult_selection=adult_selection,
-        adult_to_child_ratio=adult_to_child_ratio,
-        parent_selection=parent_selection,
-        k=k,
-        epsilon=epsilon,
-        crossover_function=crossover_function,
-        mutation_function=mutation_function,
-        threshold=threshold
-    )
-    runner1.solve()
-    runner1.plot()
+FLATLAND = get_flatlands()[0]
+AGENT = FlatlandAgent(
+    world=FLATLAND,
+    learning_rate=0.5,
+    discount_rate=0.5,
+    p=0.25
+)
+
+if __name__ == '__main__':
+    Q = AGENT.Q
+
+    last_agent = None
+
+    for _ in xrange(ITERATIONS):
+        game = deepcopy(FLATLAND)
+        game.agent = deepcopy(AGENT)
+
+        game.agent.Q = Q
+
+        Q = game.agent.Q
+
+        while not game.agent.finished:
+            first_state = game.agent.state
+            action = game.agent.select_action()
+            reward = game.agent.move(action)
+            second_state = game.agent.state
+
+            assert first_state != second_state
+
+            a = game.agent.learning_rate
+            g = game.agent.discount_rate
+            best_next = max(Q[second_state, a] for a in game.agent.possible_actions)
+
+            Q[first_state, action] += a * (reward + g * best_next - Q[first_state, action])
+
+        print(game.agent.actions)
+        last_agent = game.agent
+
+    FlatlandGUI(deepcopy(AGENT), last_agent.actions)

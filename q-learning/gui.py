@@ -2,30 +2,33 @@ from __future__ import print_function, division, unicode_literals
 import pygame
 from time import sleep
 
-from enums import *
-from utils import tuple_add
+from utils import *
 
 
-CELL_SIZE = 100
+LINE_WIDTH = 2
+
+CELL_SIZE = 50
 BACKGROUND = (255, 255, 255)
 FOREGROUND = (0, 0, 0)
 
+START = (0, 255, 0)
 FOOD_COLOR = (0, 125, 0)
 POISON_COLOR = (125, 0, 0)
 
 SLEEP_TIME_DEFAULT = 1.0
 SLEEP_TIME_DELTA = 0.25
 
-TITLE = 'Evolved neural network for solving the Flatland problem'
+TITLE = ''
 
 
 class FlatlandGUI:
-    def __init__(self, flatland, actions):
+    def __init__(self, agent, actions):
         """
         takes a fresh board and a list of actions and visualizes
         """
-        self.flatland = flatland
-        self.window_w, self.window_h = flatland.w * CELL_SIZE, flatland.h * CELL_SIZE
+        self.agent = agent
+        self.flatland = agent.world
+        self.window_w, self.window_h = self.flatland.w * CELL_SIZE, self.flatland.h * CELL_SIZE
 
         pygame.init()
         sleep_time = SLEEP_TIME_DEFAULT
@@ -59,7 +62,7 @@ class FlatlandGUI:
                         sleep_time += SLEEP_TIME_DELTA
 
             sleep(sleep_time)
-            flatland.perform_action(action)
+            self.agent.move(action)
 
         pygame.display.set_caption("{} - {}".format(TITLE, 'Finished'))
 
@@ -73,23 +76,21 @@ class FlatlandGUI:
 
         for x in xrange(self.flatland.w):
             x1 = x * CELL_SIZE - 1
-            pygame.draw.line(self.window, FOREGROUND, (x1, 0), (x1, self.window_h), 2)
+            pygame.draw.line(self.window, FOREGROUND, (x1, 0), (x1, self.window_h), LINE_WIDTH)
 
         for y in xrange(self.flatland.h):
             y1 = y * CELL_SIZE - 1
-            pygame.draw.line(self.window, FOREGROUND, (0, y1), (self.window_w, y1), 2)
+            pygame.draw.line(self.window, FOREGROUND, (0, y1), (self.window_w, y1), LINE_WIDTH)
 
         for y, row in enumerate(self.flatland.grid):
             for x, cell in enumerate(row):
-                if (x, y) == self.flatland.agent_position:
+                if (x, y) == self.flatland.agent_initial_position:
+                    self.fill_cell(x, y, START)
+                if (x, y) == self.agent.position:
                     self.draw_circle_in_cell(x, y, (0, 0, 125), radius=CELL_SIZE // 4)
-                    offset = CELL_SIZE // 2
-                    coord = x * CELL_SIZE + offset, y * CELL_SIZE + offset
-                    coord = tuple_add(coord, map(lambda x: 20 * x, DELTAS[self.flatland.agent_heading]))
-                    pygame.draw.circle(self.window, (255, 255, 0), coord, CELL_SIZE // 10)
-                elif cell == FOOD:
-                    self.draw_circle_in_cell(x, y, FOOD_COLOR)
-                elif cell == POISON:
+                elif is_food(cell):
+                    self.draw_circle_in_cell(x, y, FOOD_COLOR, radius=CELL_SIZE // 5)
+                elif is_poison(cell):
                     self.draw_circle_in_cell(x, y, POISON_COLOR)
 
         pygame.display.flip()
@@ -98,6 +99,10 @@ class FlatlandGUI:
         offset = CELL_SIZE // 2
         coord = cell_x * CELL_SIZE + offset, cell_y * CELL_SIZE + offset
         pygame.draw.circle(self.window, color, coord, radius)
+
+    def fill_cell(self, cell_x, cell_y, color):
+        x, y = cell_x * CELL_SIZE + LINE_WIDTH // 2, cell_y * CELL_SIZE + LINE_WIDTH // 2
+        pygame.draw.rect(self.window, color, pygame.Rect(x, y, CELL_SIZE - LINE_WIDTH, CELL_SIZE - LINE_WIDTH))
 
     def pause(self):
         self.paused = True
