@@ -10,8 +10,8 @@ PENALTY = -5
 
 
 class FlatlandAgent(QLearningAgent):
-    def __init__(self, world, learning_rate, discount_rate, p):
-        super(FlatlandAgent, self).__init__(learning_rate, discount_rate, p, possible_actions=ACTIONS)
+    def __init__(self, Q, world, learning_rate, discount_rate, temperature):
+        super(FlatlandAgent, self).__init__(Q, learning_rate, discount_rate, temperature, possible_actions=ACTIONS)
 
         self.world = world
         self.x, self.y = self.world.agent_initial_position
