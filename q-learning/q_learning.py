@@ -20,6 +20,9 @@ class QLearningAgent(object):
     def score(self):
         raise NotImplementedError
 
+    def move(self, action):
+        raise NotImplementedError
+
     def best_action(self, state):
         eaten, pos = state
         qs = self.Q[eaten][pos]

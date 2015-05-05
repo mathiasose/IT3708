@@ -30,7 +30,7 @@ if __name__ == '__main__':
             qs1 = agent.Q[eat1][pos1]
             qs1[action] += agent.lr * (reward + agent.dr * best - qs1[action])
 
-        print(i, end='\n' if i % 50 == 0 else ' ')
+        print(i)
         last_actions = agent.actions
 
         agent.reset_world()
