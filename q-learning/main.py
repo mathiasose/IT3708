@@ -6,6 +6,8 @@ from flatland import FlatlandAgent
 from flatlands import flatland_from_file
 from gui import FlatlandGUI
 
+from time import time
+
 if __name__ == '__main__':
     txt = sys.argv[1]
     iterations = int(sys.argv[2])
@@ -26,8 +28,10 @@ if __name__ == '__main__':
     update_q = lambda q, r, b: q + agent.lr * (r + agent.dr * b - q)
     best_q = lambda eaten, pos: max(agent.Q[eaten][pos][a] for a in agent.possible_actions)
 
+    start = time()
+
     for i in xrange(iterations):
-        while (not agent.finished) and (agent.timeout and agent.steps < agent.timeout):
+        while (not agent.finished) and (not agent.timeout or agent.steps < agent.timeout):
             s1 = agent.state
             action = agent.select_action()
             reward = agent.move(action)
@@ -42,11 +46,16 @@ if __name__ == '__main__':
                 val = agent.Q[e1][p1][action]
                 agent.Q[e1][p1][action] = update_q(val, reward, best_q(e2, p2))
 
-        print(i, agent.steps)
+        print(i, agent.steps, len(agent.food_eaten), agent.poison_eaten)
         if i == (iterations - 1):
             replay = agent.replay
 
         agent.reset_world()
         agent.temperature -= dt
 
-    FlatlandGUI(agent, replay)
+    finish = time()
+
+    print("Time: {}s".format(finish - start))
+
+    agent.temperature = -1
+    FlatlandGUI(agent)

@@ -85,7 +85,7 @@ class PointyShape(object):
 
 
 class FlatlandGUI:
-    def __init__(self, agent, actions):
+    def __init__(self, agent):
         """
         takes a fresh board and a list of actions and visualizes
         """
@@ -101,7 +101,7 @@ class FlatlandGUI:
 
         self.pause()
 
-        for action in actions:
+        while not agent.finished:
             self.draw_state()
 
             while self.paused:
@@ -125,6 +125,8 @@ class FlatlandGUI:
                         sleep_time += SLEEP_TIME_DELTA
 
             sleep(sleep_time)
+
+            action = self.agent.select_action()
             self.agent.move(action)
 
         self.finish()
