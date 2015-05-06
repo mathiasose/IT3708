@@ -4,7 +4,7 @@ from random import random, choice
 
 
 class QLearningAgent(object):
-    def __init__(self, learning_rate, discount_rate, temperature, possible_actions):
+    def __init__(self, learning_rate, discount_rate, temperature, possible_actions, backup_x):
         self.Q = defaultdict(lambda: defaultdict(lambda: defaultdict(int)))
 
         self.lr = learning_rate
@@ -12,6 +12,9 @@ class QLearningAgent(object):
         self.temperature = temperature
 
         self.possible_actions = possible_actions
+
+        self.backup_x = backup_x
+        self.memory = []
 
     @property
     def state(self):
@@ -37,3 +40,9 @@ class QLearningAgent(object):
             return choice(self.possible_actions)
         else:
             return exploit
+
+    def memory_add(self, x):
+        self.memory.append(x)
+
+        if len(self.memory) > self.backup_x:
+            self.memory.pop(0)

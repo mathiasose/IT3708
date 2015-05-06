@@ -16,8 +16,9 @@ if __name__ == '__main__':
 
     dt = INIT_TEMP / iterations
 
-    last_actions = None
+    replay = []
     for i in xrange(iterations):
+        print(i)
         while not agent.finished:
             eat1, pos1 = agent.state
             action = agent.select_action()
@@ -30,10 +31,12 @@ if __name__ == '__main__':
             qs1 = agent.Q[eat1][pos1]
             qs1[action] += agent.lr * (reward + agent.dr * best - qs1[action])
 
-        print(i)
-        last_actions = agent.actions
+            agent.memory_add(((eat1, pos1), action, reward))
+
+        if i == (iterations - 1):
+            replay = agent.replay
 
         agent.reset_world()
         agent.temperature -= dt
 
-    FlatlandGUI(agent, last_actions)
+    FlatlandGUI(agent, replay)
