@@ -101,7 +101,7 @@ class FlatlandGUI:
 
         self.pause()
 
-        for action in actions + [NOOP]:
+        for action in actions:
             self.draw_state()
 
             while self.paused:
@@ -193,5 +193,6 @@ class FlatlandGUI:
         pygame.display.set_caption(TITLE)
 
     def finish(self):
+        self.draw_state()
         pygame.display.set_caption("{} - {}".format(TITLE, 'Finished'))
         print(self.agent.status)

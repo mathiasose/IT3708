@@ -4,12 +4,12 @@ from random import random, choice
 
 
 class QLearningAgent(object):
-    def __init__(self, learning_rate, discount_rate, temperature, possible_actions, backup_x):
+    def __init__(self, learning_rate, discount_rate, possible_actions, backup_x):
         self.Q = defaultdict(lambda: defaultdict(lambda: defaultdict(int)))
 
         self.lr = learning_rate
         self.dr = discount_rate
-        self.temperature = temperature
+        self.temperature = 1.0
 
         self.possible_actions = possible_actions
 

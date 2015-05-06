@@ -7,13 +7,18 @@ from config import *
 
 
 class FlatlandAgent(QLearningAgent):
-    def __init__(self, world, learning_rate=LEARNING_RATE, discount_rate=DISCOUNT_RATE, temperature=INIT_TEMP):
+    def __init__(self,
+                 world,
+                 learning_rate=LEARNING_RATE,
+                 discount_rate=DISCOUNT_RATE,
+                 timeout=None,
+                 backup_x=BACKUP_X
+    ):
         super(FlatlandAgent, self).__init__(
             learning_rate,
             discount_rate,
-            temperature,
             possible_actions=ACTIONS,
-            backup_x=BACKUP_X
+            backup_x=backup_x
         )
 
         self.world = world
@@ -25,6 +30,8 @@ class FlatlandAgent(QLearningAgent):
         self.poison_eaten = 0
 
         self.replay = []
+
+        self.timeout = timeout
 
     def reset_world(self):
         self.world = deepcopy(self.original)

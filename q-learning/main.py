@@ -1,20 +1,25 @@
 from __future__ import print_function, division
+from math import sqrt
 import sys
 
 from flatland import FlatlandAgent
 from flatlands import flatland_from_file
 from gui import FlatlandGUI
-from config import *
 
 if __name__ == '__main__':
     txt = sys.argv[1]
     iterations = int(sys.argv[2])
 
+    flatland = flatland_from_file(txt)
+    area = flatland.w * flatland.h
+
     agent = FlatlandAgent(
-        world=flatland_from_file(txt)
+        world=flatland,
+        timeout=area,
+        backup_x=int(sqrt(area))
     )
 
-    dt = INIT_TEMP / iterations
+    dt = 1.0 / iterations
 
     replay = []
 
@@ -22,8 +27,7 @@ if __name__ == '__main__':
     best_q = lambda eaten, pos: max(agent.Q[eaten][pos][a] for a in agent.possible_actions)
 
     for i in xrange(iterations):
-        print(i)
-        while not agent.finished:
+        while (not agent.finished) and (agent.timeout and agent.steps < agent.timeout):
             s1 = agent.state
             action = agent.select_action()
             reward = agent.move(action)
@@ -38,6 +42,7 @@ if __name__ == '__main__':
                 val = agent.Q[e1][p1][action]
                 agent.Q[e1][p1][action] = update_q(val, reward, best_q(e2, p2))
 
+        print(i, agent.steps)
         if i == (iterations - 1):
             replay = agent.replay
 
