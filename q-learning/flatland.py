@@ -11,14 +11,18 @@ class FlatlandAgent(QLearningAgent):
                  world,
                  learning_rate=LEARNING_RATE,
                  discount_rate=DISCOUNT_RATE,
-                 timeout=None,
-                 backup_x=BACKUP_X
+                 step_limit=0,
+                 backup_x=BACKUP_X,
+                 temperature=1.0,
+                 dt=0.1
     ):
         super(FlatlandAgent, self).__init__(
             learning_rate,
             discount_rate,
             possible_actions=ACTIONS,
-            backup_x=backup_x
+            backup_x=backup_x,
+            temperature=temperature,
+            dt=dt
         )
 
         self.world = world
@@ -29,9 +33,9 @@ class FlatlandAgent(QLearningAgent):
         self.food_eaten = set()
         self.poison_eaten = 0
 
-        self.replay = []
+        self.step_limit = step_limit
 
-        self.timeout = timeout
+        self.steps = 0
 
     def reset_world(self):
         self.world = deepcopy(self.original)
@@ -40,16 +44,16 @@ class FlatlandAgent(QLearningAgent):
         self.food_eaten = set()
         self.poison_eaten = 0
 
-        self.replay = []
         self.memory = []
+
+        self.steps = 0
+
+        self.explore = 0
+        self.exploit = 0
 
     @property
     def position(self):
         return self.x, self.y
-
-    @property
-    def steps(self):
-        return len(self.replay)
 
     @property
     def state(self):
@@ -59,8 +63,12 @@ class FlatlandAgent(QLearningAgent):
     def finished(self):
         return self.position == self.world.agent_initial_position and self.world.get_count_of_predicate(is_food) == 0
 
+    @property
+    def timeout(self):
+        return self.step_limit and self.steps >= self.step_limit
+
     def move(self, direction):
-        self.replay.append(direction)
+        self.steps += 1
 
         self.x, self.y = self.world.absolute_coordinates(*tuple_add(self.position, DELTAS[direction]))
 
@@ -74,23 +82,11 @@ class FlatlandAgent(QLearningAgent):
             self.world.set_tile(self.x, self.y, EMPTY)
             return REWARD
         elif is_poison(tile):
-            self.world.set_tile(self.x, self.y, EMPTY)
             self.poison_eaten += 1
+            self.world.set_tile(self.x, self.y, EMPTY)
             return PENALTY
         else:
             return STEP
-
-    @property
-    def status(self):
-        return '''
-Food eaten:   {f}
-Poison eaten: {p}
-Steps:        {s}
-        '''.format(
-            f=len(self.food_eaten),
-            p=self.poison_eaten,
-            s=self.steps
-        )
 
 
 class Flatland(TorusWorld):

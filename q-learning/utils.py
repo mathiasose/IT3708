@@ -25,6 +25,13 @@ def tuple_add(*tuples):
     return tuple(map(sum, zip(*tuples)))
 
 
+def manhattan_distance(c1, c2):
+    x1, y1 = c1
+    x2, y2 = c2
+
+    return abs(x1 - x2) + abs(y1 - y2)
+
+
 class TorusWorld:
     def __init__(self, grid):
         self.w, self.h = len(grid[0]), len(grid)

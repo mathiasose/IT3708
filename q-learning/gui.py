@@ -91,13 +91,15 @@ class FlatlandGUI:
         """
         self.agent = agent
         self.flatland = agent.world
-        self.window_w, self.window_h = self.flatland.w * CELL_SIZE, self.flatland.h * CELL_SIZE
+        self.world_w, self.world_h = self.flatland.w * CELL_SIZE, self.flatland.h * CELL_SIZE
+        self.window_w, self.window_h = self.world_w + 200, self.world_h
 
         pygame.init()
-        sleep_time = SLEEP_TIME_DEFAULT
+        self.sleep_time = SLEEP_TIME_DEFAULT
 
         self.paused = True
-        self.window = pygame.display.set_mode((self.window_w, self.window_h))
+        self.window = pygame.display.set_mode((self.window_w - 1, self.window_h - 1))
+        self.font = pygame.font.SysFont("monospace", 16)
 
         self.pause()
 
@@ -119,15 +121,16 @@ class FlatlandGUI:
                         self.pause()
                     elif event.key == pygame.K_PLUS:
                         # go faster
-                        sleep_time = max(sleep_time - SLEEP_TIME_DELTA, SLEEP_TIME_DELTA)
+                        self.sleep_time = max(self.sleep_time - SLEEP_TIME_DELTA, SLEEP_TIME_DELTA)
+                        self.update_title()
                     elif event.key == pygame.K_MINUS:
                         # go slower
-                        sleep_time += SLEEP_TIME_DELTA
+                        self.sleep_time += SLEEP_TIME_DELTA
+                        self.update_title()
 
-            sleep(sleep_time)
+            sleep(self.sleep_time)
 
-            action = self.agent.select_action()
-            self.agent.move(action)
+            self.agent.move(self.agent.select_action())
 
         self.finish()
 
@@ -136,16 +139,46 @@ class FlatlandGUI:
                 if event.type == pygame.QUIT or event.type == pygame.KEYDOWN and event.key == pygame.K_q:
                     return
 
+    def update_title(self):
+        if self.paused:
+            pygame.display.set_caption("{} - {}".format(TITLE, 'Paused'))
+        else:
+            pygame.display.set_caption("{} - tick={}s".format(TITLE, self.sleep_time))
+
     def draw_state(self):
         self.window.fill(BACKGROUND)
+        self.window.blit(
+            self.font.render('Food eaten:   {}'.format(len(self.agent.food_eaten)), True, (0, 0, 0)),
+            (self.world_w + 10, 10)
+        )
+        self.window.blit(
+            self.font.render('Poison eaten: {}'.format(self.agent.poison_eaten), True, (0, 0, 0)),
+            (self.world_w + 10, 40)
+        )
+        self.window.blit(
+            self.font.render('Steps:        {}'.format(self.agent.steps), True, (0, 0, 0)),
+            (self.world_w + 10, 70)
+        )
+        self.window.blit(
+            self.font.render('(exploring):  {}'.format(self.agent.explore), True, (0, 0, 0)),
+            (self.world_w + 10, 100)
+        )
+        self.window.blit(
+            self.font.render('(exploiting): {}'.format(self.agent.exploit), True, (0, 0, 0)),
+            (self.world_w + 10, 130)
+        )
+        self.window.blit(
+            self.font.render('Backup {}'.format(self.agent.backup_x), True, (0, 0, 0)),
+            (self.world_w + 10, 190)
+        )
 
-        for x in xrange(self.flatland.w):
+        for x in xrange(self.flatland.w + 1):
             x1 = x * CELL_SIZE - 1
-            pygame.draw.line(self.window, FOREGROUND, (x1, 0), (x1, self.window_h), LINE_WIDTH)
+            pygame.draw.line(self.window, FOREGROUND, (x1, 0), (x1, self.world_h - 2), LINE_WIDTH)
 
-        for y in xrange(self.flatland.h):
+        for y in xrange(self.flatland.h + 1):
             y1 = y * CELL_SIZE - 1
-            pygame.draw.line(self.window, FOREGROUND, (0, y1), (self.window_w, y1), LINE_WIDTH)
+            pygame.draw.line(self.window, FOREGROUND, (0, y1), (self.world_w - 2, y1), LINE_WIDTH)
 
         eaten, pos = self.agent.state
         for y, row in enumerate(self.flatland.grid):
@@ -157,7 +190,7 @@ class FlatlandGUI:
                 elif is_food(cell):
                     self.draw_circle_in_cell(x, y, FOOD_COLOR, radius=EDIBLE_R)
                 elif is_poison(cell):
-                    self.draw_circle_in_cell(x, y, POISON_COLOR, radius=EDIBLE_R)
+                    self.fill_cell(x, y, FOREGROUND)
                 else:
                     direction = self.agent.best_action(state=(eaten, (x, y)))
                     if direction:
@@ -188,13 +221,21 @@ class FlatlandGUI:
 
     def pause(self):
         self.paused = True
-        pygame.display.set_caption("{} - {}".format(TITLE, 'Paused'))
+        self.update_title()
 
     def unpause(self):
         self.paused = False
-        pygame.display.set_caption(TITLE)
+        self.update_title()
 
     def finish(self):
         self.draw_state()
         pygame.display.set_caption("{} - {}".format(TITLE, 'Finished'))
-        print(self.agent.status)
+        print('''
+Food eaten:   {f}
+Poison eaten: {p}
+Steps:        {s}
+        '''.format(
+            f=len(self.agent.food_eaten),
+            p=self.agent.poison_eaten,
+            s=self.agent.steps
+        ))
