@@ -1,7 +1,7 @@
 from __future__ import print_function, division
 from copy import deepcopy
 
-from q_learning import QLearningAgent
+from q_learning import QLearningAgent, Q3
 from utils import *
 from config import *
 
@@ -14,15 +14,16 @@ class FlatlandAgent(QLearningAgent):
                  step_limit=0,
                  backup_x=BACKUP_X,
                  temperature=1.0,
-                 dt=0.1
+                 delta_t=0.1
     ):
         super(FlatlandAgent, self).__init__(
-            learning_rate,
-            discount_rate,
+            Q=Q3(),
+            learning_rate=learning_rate,
+            discount_rate=discount_rate,
             possible_actions=ACTIONS,
             backup_x=backup_x,
             temperature=temperature,
-            dt=dt
+            delta_t=delta_t
         )
 
         self.world = world
@@ -37,7 +38,7 @@ class FlatlandAgent(QLearningAgent):
 
         self.steps = 0
 
-    def reset_world(self):
+    def reset(self):
         self.world = deepcopy(self.original)
         self.x, self.y = self.world.agent_initial_position
 

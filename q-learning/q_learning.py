@@ -3,14 +3,84 @@ from collections import defaultdict
 from random import random, choice
 
 
-class QLearningAgent(object):
-    def __init__(self, learning_rate, discount_rate, possible_actions, backup_x, temperature=1.0, dt=0.1):
+class Q2(object):
+    """
+    Wrapping data structure for Q-Learning with a two levels of keys
+    """
+    def __init__(self):
+        self.Q = defaultdict(lambda: defaultdict(float))
+
+    def get(self, key):
+        state, action = key
+        return self.Q[state][action]
+
+    def set(self, key, value):
+        state, action = key
+        self.Q[state][action] = value
+
+    def best_action(self, part_key, actions):
+        d = self.Q.get(part_key, None)
+        if d is None:
+            return None
+
+        return max(actions, key=lambda action: d[action])
+
+    def best_q(self, part_key):
+        d = self.Q.get(part_key, None)
+        if d is None:
+            return 0.0
+
+        return max(d[a] for a in d.keys())
+
+
+class Q3(object):
+    """
+    Wrapping data structure for Q-Learning with a three levels of keys
+    """
+    def __init__(self):
         self.Q = defaultdict(lambda: defaultdict(lambda: defaultdict(float)))
 
-        self.lr = learning_rate
-        self.dr = discount_rate
+    def get(self, key):
+        (a, b), c = key
+        return self.Q[a][b][c]
+
+    def set(self, key, value):
+        (a, b), c = key
+        self.Q[a][b][c] = value
+
+    def best_action(self, part_key, actions):
+        a, b = part_key
+        d = self.Q.get(a, None)
+        if d is None:
+            return None
+
+        d = d.get(b, None)
+        if d is None:
+            return None
+
+        return max(actions, key=lambda action: d[action])
+
+    def best_q(self, part_key):
+        a, b = part_key
+        d = self.Q.get(a, None)
+        if d is None:
+            return 0
+
+        d = d.get(b, None)
+        if d is None:
+            return 0
+
+        return max(d[a] for a in d.keys())
+
+
+class QLearningAgent(object):
+    def __init__(self, Q, learning_rate, discount_rate, possible_actions, backup_x, temperature=1.0, delta_t=0.1):
+        self.Q = Q
+
+        self.learning_rate = learning_rate
+        self.discount_rate = discount_rate
         self.temperature = temperature
-        self.dt = dt
+        self.delta_t = delta_t
 
         self.possible_actions = possible_actions
 
@@ -22,32 +92,27 @@ class QLearningAgent(object):
 
     @property
     def state(self):
-        raise NotImplementedError
+        raise NotImplementedError()
 
     @property
     def finished(self):
-        raise NotImplementedError
+        raise NotImplementedError()
 
     @property
     def timeout(self):
         return False
 
     def score(self):
-        raise NotImplementedError
+        raise NotImplementedError()
 
     def move(self, action):
-        raise NotImplementedError
+        raise NotImplementedError()
 
-    def best_action(self, state):
-        eaten, pos = state
-        qs = self.Q[eaten][pos]
-        if sum(qs.values()) == 0:
-            return None
-
-        return max(self.possible_actions, key=lambda a: qs[a])
+    def reset(self):
+        raise NotImplementedError()
 
     def select_action(self):
-        exploit = self.best_action(self.state)
+        exploit = self.Q.best_action(self.state, self.possible_actions)
         if exploit is None or random() <= self.temperature:
             self.explore += 1
             return choice(self.possible_actions)
@@ -61,19 +126,8 @@ class QLearningAgent(object):
         if len(self.memory) > (self.backup_x + 1):
             self.memory.pop(0)
 
-    def update_q(self, q, r, b):
-        return q + self.lr * (r + self.dr * b - q)
-
-    def best_q(self, eaten, pos):
-        d = self.Q.get(eaten, None)
-        if d is None:
-            return 0
-
-        d = d.get(pos, None)
-        if d is None:
-            return 0
-
-        return max(d[a] for a in d.keys())
+    def update_q_value(self, value, reward, best_next):
+        return value + self.learning_rate * (reward + self.discount_rate * best_next - value)
 
     def train(self, after_iteration=None):
         while self.temperature > 0:
@@ -86,13 +140,14 @@ class QLearningAgent(object):
                 self.memory_add((first_state, action, reward, second_state))
 
                 for s1, action, reward, s2 in self.memory[::-1]:
-                    e1, p1 = s1
-                    e2, p2 = s2
+                    key = (s1, action, )
 
-                    val = self.Q[e1][p1][action]
-                    self.Q[e1][p1][action] = self.update_q(val, reward, self.best_q(e2, p2))
+                    val = self.Q.get(key)
+                    self.Q.set(key, self.update_q_value(val, reward, self.Q.best_q(s2)))
 
             if after_iteration:
                 after_iteration()
 
-            self.temperature -= self.dt
+            self.reset()
+
+            self.temperature -= self.delta_t

@@ -192,7 +192,7 @@ class FlatlandGUI:
                 elif is_poison(cell):
                     self.fill_cell(x, y, FOREGROUND)
                 else:
-                    direction = self.agent.best_action(state=(eaten, (x, y)))
+                    direction = self.agent.Q.best_action((eaten, (x, y)), self.agent.possible_actions)
                     if direction:
                         self.arrow_in_cell(x, y, direction, ARROW_COLOR)
 

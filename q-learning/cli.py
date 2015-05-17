@@ -10,14 +10,36 @@ from utils import manhattan_distance
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--scenario', nargs='?', type=str, required=True)
-    parser.add_argument('--iterations', nargs='?', type=int, default=1000)
-    parser.add_argument('--temperature', nargs='?', type=float, default=1.0)
-    parser.add_argument('--backup', nargs='?', type=int, default=None)
-
+    parser = argparse.ArgumentParser(description='Run a Q-Learning Flatland scenario')
+    parser.add_argument(
+        '--scenario',
+        nargs='?',
+        type=str,
+        required=True,
+        help='Path to a .txt with a Flatland scenario'
+    )
+    parser.add_argument(
+        '--iterations',
+        nargs='?',
+        type=int,
+        required=True,
+        help='Number of iterations to run'
+    )
+    parser.add_argument(
+        '--temperature',
+        nargs='?',
+        type=float,
+        default=1.0,
+        help='Starting temperature'
+    )
+    parser.add_argument(
+        '--backup',
+        nargs='?',
+        type=int,
+        default=None,
+        help='Defaults to a value proportionate to the world size'
+    )
     args = parser.parse_args()
-    print(args)
 
     flatland = flatland_from_file(args.scenario)
 
@@ -30,7 +52,7 @@ if __name__ == '__main__':
         step_limit=flatland.w * flatland.h,
         backup_x=backup_x,
         temperature=args.temperature,
-        dt=args.temperature / args.iterations
+        delta_t=args.temperature / args.iterations
     )
 
     start = time()
@@ -43,9 +65,8 @@ if __name__ == '__main__':
             len(agent.food_eaten),
             agent.poison_eaten
         )
-        agent.reset_world()
 
-    agent.train(after_iteration=after)
+    agent.train(after)
 
     finish = time()
 
