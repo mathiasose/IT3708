@@ -39,6 +39,10 @@ if __name__ == '__main__':
         default=None,
         help='Defaults to a value proportionate to the world size'
     )
+    parser.add_argument(
+        '--plot',
+        action='store_true'
+    )
     args = parser.parse_args()
 
     flatland = flatland_from_file(args.scenario)
@@ -55,12 +59,20 @@ if __name__ == '__main__':
         delta_t=args.temperature / args.iterations
     )
 
+    ideal_temp = []
+    experienced_temp = []
+
     start = time()
 
     def after():
+        e = agent.explore / agent.steps
+
+        ideal_temp.append(agent.temperature)
+        experienced_temp.append(e)
+
         print(
             round(agent.temperature, 3),
-            round(agent.explore / agent.steps, 3),
+            round(e, 3),
             agent.steps,
             len(agent.food_eaten),
             agent.poison_eaten
@@ -72,5 +84,10 @@ if __name__ == '__main__':
 
     print("Time: {}s".format(finish - start))
 
+    if args.plot:
+        from plot import plot_temperatures
+        plot_temperatures(ideal_temp, experienced_temp)
+
     agent.temperature = -1
     FlatlandGUI(agent)
+

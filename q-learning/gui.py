@@ -145,8 +145,7 @@ class FlatlandGUI:
         else:
             pygame.display.set_caption("{} - tick={}s".format(TITLE, self.sleep_time))
 
-    def draw_state(self):
-        self.window.fill(BACKGROUND)
+    def draw_text(self):
         self.window.blit(
             self.font.render('Food eaten:   {}'.format(len(self.agent.food_eaten)), True, (0, 0, 0)),
             (self.world_w + 10, 10)
@@ -171,6 +170,14 @@ class FlatlandGUI:
             self.font.render('Backup {}'.format(self.agent.backup_x), True, (0, 0, 0)),
             (self.world_w + 10, 190)
         )
+        self.window.blit(
+            self.font.render('Init temp: {}'.format(self.agent.initial_temperature), True, (0, 0, 0)),
+            (self.world_w + 10, 220)
+        )
+
+    def draw_state(self):
+        self.window.fill(BACKGROUND)
+        self.draw_text()
 
         for x in xrange(self.flatland.w + 1):
             x1 = x * CELL_SIZE - 1

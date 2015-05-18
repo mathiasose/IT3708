@@ -79,6 +79,7 @@ class QLearningAgent(object):
 
         self.learning_rate = learning_rate
         self.discount_rate = discount_rate
+        self.initial_temperature = temperature
         self.temperature = temperature
         self.delta_t = delta_t
 
